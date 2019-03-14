@@ -1,0 +1,23 @@
+<!--home.wxml-->
+<import src='/pages/template/list_home_cmp.wxml'/>
+<swiper
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  circular="{{circular}}"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<block wx:for="{{information}}" wx:key="{{index}}">
+<view catchtap="toDetail" data-index='{{index}}'>
+<template is="msgItem" data="{{...item}}"/>
+</view>
+</block>
+

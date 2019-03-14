@@ -1,0 +1,19 @@
+<!--pages/template/list_home_cmp.wxml-->
+<template name="msgItem">
+<view class="container1">
+
+    <view class="item1">
+        <view class="cmp_font">
+        {{title}}
+        </view>
+    </view>
+
+    <view class="item2">
+    <image class="cmp_image"src="{{url}}"/>
+    </view>
+
+
+</view>
+<!-- <view class="divLine"></view> -->
+
+</template>

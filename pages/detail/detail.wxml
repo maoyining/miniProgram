@@ -1,0 +1,18 @@
+<!--pages/detail/detail.wxml-->
+<view>
+<image class="img_begin" src="/static/images/begin.jpg"/>
+
+
+<import src="../../wxParse/wxParse.wxml"/>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+ <!-- <button open-type="share" type="primary" >
+        <image src='/static/images/share.png'></image>
+</button>  -->
+<view>
+        <view>
+        <image class="" src="/static/images/collection.png"/>
+        <image src="/static/images/share.png"/>
+        </view>
+        <view class="line"></view>
+</view>
+</view>

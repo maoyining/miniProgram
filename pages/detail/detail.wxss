@@ -1,0 +1,10 @@
+/* pages/detail/detail.wxss */
+.img_begin{
+   width:100%;
+   height:400rpx; 
+}
+
+@import "/wxParse/wxParse.wxss"
+
+
+

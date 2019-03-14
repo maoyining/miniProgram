@@ -1,0 +1,42 @@
+/* pages/template/list_home_cmp.wxss */
+
+.container1{
+    height: 100%;
+    width:100%;
+    /* background-color:#f2f2f2; */
+    margin-top:0rpx;
+    display:flex;
+}
+    
+    
+
+   
+#two{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-content:center;
+    justify-content:space-around;
+    height:70vh;
+  }
+   
+  #two .area{
+    width:46vw;
+    margin-top:30rpx;
+    text-align: center;
+  }
+  #child{
+    width: 100px;
+    height: 24px;  
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    background: yellowgreen;
+
+  }
+
+  

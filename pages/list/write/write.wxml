@@ -1,0 +1,61 @@
+<!--index.wxml-->
+<view class="container">
+hello ,this is write page！
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+  
+ 
+  <view class="section">
+    <view class="section__title">比赛名称</view>
+    <input name="match1"  auto-focus />
+  </view>
+
+  <view class="section">
+    <view class="section__title">队伍名称</view>
+    <input name="name1" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">简短需求</view>
+    <input name="tag1" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">目前人数</view>
+    <input name="memberNow1" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">期望人数</view>
+    <input name="memberTotal1" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">队伍描述</view>
+    <input name="desc1" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">希望谁加入</view>
+    <input name="need1" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">联系人微信号</view>
+    <input name="contact1" />
+  </view>
+
+
+  
+  
+  <view class="btn-area">
+    <button formType="submit" bindinput="getInput"  >提交</button>
+    <button formType="reset">重置</button>
+  </view>
+</form>
+<!-- <view wx:if="{{isSubmit}}">
+  {{warn ? warn : "是否公开信息："+isPub+"，手机号："+phone+"，密码："+pwd+"，性别："+sex}}
+</view> -->
+
+</view>
+

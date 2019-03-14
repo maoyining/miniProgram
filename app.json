@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/list/home/home",
+    "pages/list/sort/sort",
+    "pages/list/write/write",
+    "pages/list/my/my",
+    "pages/logs/logs",
+    
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e65c00",
+    "navigationBarTitleText": "杭电竞赛",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/list/home/home",
+        "text": "首页",
+        "iconPath": "static/images/index.png",
+        "selectedIconPath": "static/images/index.png"
+      },
+      {
+        "pagePath": "pages/list/sort/sort",
+        "text": "分类",
+        "iconPath": "static/images/category.png",
+        "selectedIconPath": "static/images/category.png"
+      },
+      {
+        "pagePath": "pages/list/write/write",
+        "text": "发帖",
+        "iconPath": "static/images/put.png",
+        "selectedIconPath": "static/images/put.png"
+      },
+      {
+        "pagePath": "pages/list/my/my",
+        "text": "我的",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+<template name="msgItem_sort">
+
+<!-- <view class="divLine"></view> -->
+
+    <view class='area'>
+        <image mode="widthFix" src='{{url}}' style='width:100%;border-radius:15rpx;' />
+        <view class="child">
+            <text>{{title}}</text>
+        </view>
+    </view>
+
+    
+
+
+</template>
