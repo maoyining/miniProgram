@@ -1,4 +1,66 @@
 <!--index.wxml-->
-<view class="container">
- hello,this is my page!
-</view>
+<!--用于用户登录以及显示用户昵称-->
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='icon-title text-orange '></text> 我的
+    </view> 
+  </view>
+
+<!--菜单列表-->
+  <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <!--显示自己创建的队伍-->
+        <view class="cu-item {{menuArrow?'arrow':''}}">
+          <view>
+            <button class="cu-btn content" bindtap="onChangeShowState">
+                 <text class='icon-btn text-olive'></text>
+                  <text class='text-grey' >我创建的队伍</text>
+            </button>
+          </view>
+        </view>
+  <!--首先是队伍显示界面，点击之后隐藏-->
+      <view class="hide{{showView?'show':''}}">
+        <block wx:for="{{information}}" wx:key="{{item.id}}">
+              <button bindtap='getTeam' data-index='{{index}}'>
+                {{item.name}}
+              </button>
+          </block>
+        </view>
+   
+  
+  <!--点击之后输入条件，输入结束之后先跳转到结果界面，之后返回到本页面-->
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <button class='cu-btn content'bindtap='onChangeShowStateTeam' >
+        <text class='icon-btn text-olive'></text>
+        <text class='text-grey'>请输入查询条件查询队伍</text>
+      </button>
+      </view>
+
+      <!-- <view class="hide{{showView1?'show':''}}">-->
+       <view class="cu-item {{menuArrow?'arrow':''}}">
+          <button class='cu-btn content' >
+            <text class='icon-discoverfill text-orange'></text>
+            <text class='text-grey'>联系我们</text>
+          </button>
+        </view>
+       <!-- </view>-->
+    
+
+  <!--在使用过程中，有问题请联系我们-->
+        <view class="cu-item {{menuArrow?'arrow':''}}">
+          <button class='cu-btn content' >
+            <text class='icon-discoverfill text-orange'></text>
+            <text class='text-grey'>联系我们</text>
+          </button>
+        </view>
+ 
+  </view>
+
+
+
+
+
+
+
+
+ 
+

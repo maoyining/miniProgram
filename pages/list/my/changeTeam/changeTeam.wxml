@@ -1,0 +1,50 @@
+<!--pages/list/my/changeTeam/changeTeam.wxml-->
+
+<form bindsubmit='ChangeTeam' >
+   <view class="cu-form-group margin-top">
+    <view class='title'>比赛名称</view>
+    <picker bindchange="pickerChangeMatches" value="{{index}}" range="{{question}}">
+      <view class="picker">
+        {{question[index]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="cu-form-group margin-top">
+    <view class='title'>队伍名称</view>
+    <input  class='radius' name='name' value='{{TeamInformation.name}}' ></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>简短需求</view>
+    <input  class='radius' name='tag' value='{{TeamInformation.tag}}'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>队伍目前人数</view>
+    <input  class='radius' type='number' name='memberNow' value='{{TeamInformation.memberNow}}'></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>队伍期望人数</view>
+    <input  class='radius' type='number' name='memberTotal' value='{{TeamInformation.memberTotal}}'></input>
+  </view>
+   <view class="cu-form-group">
+     <view class='title'>队伍需求</view>
+   </view>
+    <view class="cu-form-group">
+        <checkbox-group  bindchange="checkboxChangeNeed"> 
+            <label class='checkbox' wx:for="{{needs}}" wx:key="{{index}}">
+                <checkbox value='{{item}}' checked="{{item[index].checked}}">
+                  {{item}}</checkbox>
+             </label>
+         </checkbox-group>
+    </view>
+  <view class="cu-form-group">
+    <view class='title'>队伍简介</view>
+    <textarea class='radius' name='desc' value='{{TeamInformation.desc}}'></textarea>
+    </view>
+ <view class="cu-form-group">
+    <view class='title'>联系人的微信</view>
+    <textarea class='radius' name='contact' value='{{TeamInformation.contact}}'></textarea>
+    </view>
+   <button class="weui-btn" type="primary" form-type='submit'>确认修改</button>
+   <button class="weui-btn" type="primary" bindtap='DeleteTeam'>删除团队信息</button>
+</form>

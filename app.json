@@ -7,7 +7,9 @@
     "pages/list/my/my",
     "pages/logs/logs",
     
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/list/my/teamDetail/teamDetail",
+    "pages/list/my/changeTeam/changeTeam"
   ],
   "window": {
     "backgroundTextStyle": "light",

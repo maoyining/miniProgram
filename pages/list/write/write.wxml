@@ -1,61 +1,48 @@
-<!--index.wxml-->
-<view class="container">
-hello ,this is write page！
 
-<form bindsubmit="formSubmit" bindreset="formReset">
-  
- 
-  <view class="section">
-    <view class="section__title">比赛名称</view>
-    <input name="match1"  auto-focus />
+<form bindsubmit='CreateTeam' >
+   <view class="cu-form-group margin-top">
+    <view class='title'>比赛名称</view>
+    <picker bindchange="pickerChangeMatches" value="{{index}}" range="{{question}}">
+      <view class="picker">
+        {{question[index]}}
+      </view>
+    </picker>
   </view>
 
-  <view class="section">
-    <view class="section__title">队伍名称</view>
-    <input name="name1" />
+  <view class="cu-form-group margin-top">
+    <view class='title'>队伍名称</view>
+    <input  class='radius' name='name' value='{{form_info}}'></input>
   </view>
-
-  <view class="section">
-    <view class="section__title">简短需求</view>
-    <input name="tag1" />
+  <view class="cu-form-group">
+    <view class='title'>简短需求</view>
+    <input  class='radius' name='tag'  value='{{form_info}}'></input>
   </view>
-
-  <view class="section">
-    <view class="section__title">目前人数</view>
-    <input name="memberNow1" />
+  <view class="cu-form-group">
+    <view class='title'>队伍目前人数</view>
+    <input  class='radius' type='number' name='memberNow'  value='{{form_info}}'></input>
   </view>
-
-  <view class="section">
-    <view class="section__title">期望人数</view>
-    <input name="memberTotal1" />
+  <view class="cu-form-group">
+    <view class='title'>队伍期望人数</view>
+    <input  class='radius' type='number' name='memberTotal'  value='{{form_info}}'></input>
   </view>
-
-  <view class="section">
-    <view class="section__title">队伍描述</view>
-    <input name="desc1" />
-  </view>
-
-  <view class="section">
-    <view class="section__title">希望谁加入</view>
-    <input name="need1" />
-  </view>
-
-  <view class="section">
-    <view class="section__title">联系人微信号</view>
-    <input name="contact1" />
-  </view>
-
-
-  
-  
-  <view class="btn-area">
-    <button formType="submit" bindinput="getInput"  >提交</button>
-    <button formType="reset">重置</button>
-  </view>
+   <view class="cu-form-group">
+     <view class='title'>队伍需求</view>
+   </view>
+    <view class="cu-form-group">
+        <checkbox-group  bindchange="checkboxChangeNeed"> 
+            <label class='checkbox' wx:for="{{needs}}" wx:key="{{index}}">
+                <checkbox value='{{item}}' checked="{{item[index].checked}}">
+                  {{item}}</checkbox>
+             </label>
+         </checkbox-group>
+    </view>
+  <view class="cu-form-group">
+    <view class='title'>队伍简介</view>
+    <textarea class='radius' name='desc'  value='{{form_info}}'></textarea>
+    </view>
+ <view class="cu-form-group">
+    <view class='title'>联系人的微信</view>
+    <textarea class='radius' name='contact'  value='{{form_info}}'></textarea>
+    </view>
+   <button class="weui-btn" type="primary" form-type='submit'>提交</button>
 </form>
-<!-- <view wx:if="{{isSubmit}}">
-  {{warn ? warn : "是否公开信息："+isPub+"，手机号："+phone+"，密码："+pwd+"，性别："+sex}}
-</view> -->
-
-</view>
-
