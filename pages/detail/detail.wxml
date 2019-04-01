@@ -13,6 +13,8 @@
         <image class="" src="/static/images/collection.png"/>
         <image src="/static/images/share.png"/>
         </view>
-        <view class="line"></view>
+        <view class="line">
+        <image src="/static/images/end.jpg"/>  
+        </view>
 </view>
 </view>
