@@ -1,9 +1,45 @@
 /* pages/detail/detail.wxss */
+.content{
+   margin-bottom:100rpx
+}
 .img_begin{
    width:100%;
    height:400rpx; 
 }
+.little_icon{
+   width:80rpx;
+   height:80rpx;
+   margin-left:80rpx;
+   margin-right:80rpx;
+   margin-top:10rpx;
+   margin-bottom:10rpx;
+}
+.img_end{
+   width:10rpx; 
+   height:10rpx;
+}
 
+.buttom_tar{
+   height:100rpx;
+   background-color:#e9e6e679; 
+   
+   display: flex;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   box-sizing: border-box;
+   padding-bottom:0;
+}
+
+button::after {
+   border: none;
+ }
+
+ button {
+   background-color: #e9e6e679;
+   border-radius:0;
+    
+ }
 @import "/wxParse/wxParse.wxss"
 
 

@@ -9,8 +9,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //detailObj:{}
-  },
+    imgUrls1: '/static/images/collection1.png',
+    imgUrls2:'/static/images/like1.png',
+    imgUrls3: '/static/images/share1.png',
+    flag1:true,
+    flag2:true,
+    
+},
+click1:function(){
+  if(this.data.flag1==true){
+    this.setData({
+        imgUrls1: '/static/images/collection2.png',
+        flag1:false,
+    })
+    
+ }else{
+   this.setData({
+    imgUrls1: '/static/images/collection1.png',
+    flag1:true
+   })
+   
+ }
+},
+
+click2:function(){
+  if(this.data.flag2==true){
+    this.setData({
+        imgUrls2: '/static/images/like2.png',
+        flag2:false,
+    })
+    
+ }else{
+   this.setData({
+    imgUrls2: '/static/images/like1.png',
+    flag2:true
+   })
+   
+ }
+},
+
 
   /**
    * 生命周期函数--监听页面加载
