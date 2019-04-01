@@ -5,13 +5,9 @@
 
 <import src="../../wxParse/wxParse.wxml"/>
 <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
- <!-- <button open-type="share" type="primary" >
-        <image src='/static/images/share.png'></image>
-</button>  -->
+ 
 <view>
-        <!-- <view>
-        <image class="image_begin" src="/static/images/end.jpg"/>
-        </view> -->
+        
         
         <view class="buttom_tar">
 
