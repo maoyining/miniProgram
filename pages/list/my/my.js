@@ -8,15 +8,25 @@ Page({
     userName:'毛忆宁',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    showView:true,
+    showView1:true,
+  
+    gridCol: 3,
+    skin: false,
+    information:''
+
   },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -43,7 +53,39 @@ Page({
         }
       })
     }
+
+    showView:(options.showView == 'true'? true:false)
+
   },
+
+  /**
+  * getTeam 获取我创建的团队信息（单条详情）
+  * 需要传递参数teamID
+  */
+  getTeam: function (e) {
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information[index].id,
+    })
+    wx.request({
+      url: 'https://hducp.hduhelp.com/team/my',
+      method: 'GET',
+      data: {
+        teamID: this.data.information[index].id
+      },
+      header: {
+        'Authorization': 'token ' + app.globalData.token,
+        'content-type': "application/json; charset='utf-8'"
+      },
+      success: function (res) {
+        console.log(res);
+
+      }
+    })
+  },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -54,5 +96,49 @@ Page({
   },
   clickMe() {
     this.setData({userName: ' lalaland!'})
+  },
+  onChangeShowState:function(){
+    var that=this;
+    that.setData({showView:(!that.data.showView)})
+    /**
+      * 获取我创建的团队信息(列表)
+      * page:页码（首页=1）
+      * rpp:每页的显示量，最大值为20
+      */
+    var that = this;
+    wx.request({
+      url: 'https://hducp.hduhelp.com/teams/my',
+      method: 'GET',
+      data: {
+        page: 1,
+        rpp: 5
+      },
+      header: {
+        "Authorization": 'token ' + app.globalData.token,
+        'content-type': "application/json; charset='utf-8'"
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200)
+          that.setData({ information: res.data.data });
+        else {
+          wx.showToast({
+            title: '您还没有团队',
+          })
+        }
+
+      }
+    })
+  },
+  /**
+   * 下拉刷新函数
+   */
+  onPullDownRefresh(){
+    wx.stopPullDownRefresh()
+  },
+
+  onChangeShowStateTeam: function () {
+    var that = this;
+    that.setData({ showView1: (!that.data.showView1) })
   }
 })

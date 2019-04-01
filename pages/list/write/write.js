@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     motto: 'Hello World',
@@ -9,7 +8,11 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    teamData:{}
+    teamData:{},
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+    index:0,
   },
   //事件处理函数
   bindViewTap: function() {
@@ -18,38 +21,97 @@ Page({
     })
   },
   onLoad: function () {
+
+    /*请求比赛名称以及需求*/
+    var that = this;
+    wx.request({
+      url: 'https://hducp.hduhelp.com/team/question',
+      header: {
+        "Authorization": 'token ' + app.globalData.token,
+        'content-type': "application/json; charset='utf-8'"
+      },
+      method: 'GET',
+      success(res) {
+       
+        that.setData({ question: res.data.matches });
+        that.setData({ needs: res.data.need });
+        console.log(that.data.question);
+       
+      },
+    })
+  
    
   },
-  formSubmit:function(e){
-    
-    //this.data.teamData=e.detail.value
-    let teamData=e.detail.value
-    wx.request({
-      url:'https://hducp.hduhelp.com/team',
-      data:{
-        "match": teamData.match1,
-        "name": teamData.name1,
-        "tag" : teamData.tag1,  //15个字以内的简短需求说明(最容易被搜索到的关键字，不需要空格)，例子：小程序前端、Web后端、服务器运维......
-        "memberNow":parseInt(teamData.memberNow1), //目前人数
-        "memberTotal": parseInt(teamData.memberTotal1), //期望人数
-        "desc": teamData.desc1, //目前队伍、技术人员描述
-        "need":teamData.need1, //希望谁加入
-        "contact": teamData.contact1
-      
-      },
-      method:'Post',
-      header:{
-        "Authorization":'token '+app.globalData.token,
-        "content-type":"application/json" 
-      },
-      success:function(res){
-        //let article=res.data.data.content
-        console.log(res)
-        //WxParse.wxParse('article', 'html', article, that,5)
-       
-      }
 
+  /**
+ * CreateTeam --提交队伍表单，注意每个数据均不能为空
+ */
+  CreateTeam: function (e) {
+    var that = this;
+    console.log(this.data.match);
+    var str = ''
+    var i;
+    for (i = 0; i < this.data.need.length; i++) {
+      str = str + ' ' + this.data.need[i];
+    }
+    wx.request({
+      url: 'https://hducp.hduhelp.com/team',
+      header: {
+        'Authorization': 'token ' + app.globalData.token,
+        'content-type': "application/json; charset='utf-8'"
+      },
+      method: 'POST',
+      data:
+      {
+        "match": that.data.match,
+        "name": e.detail.value.name,
+        "tag": e.detail.value.tag,
+        "memberNow": parseInt(e.detail.value.memberNow),
+        "memberTotal": parseInt(e.detail.value.memberTotal),
+        "desc": e.detail.value.desc,
+        "need": str,//that.data.need[0],
+        "contact": e.detail.value.contact
+      },
+      success(res) {
+        // var teamID = res.data.data.teamID;
+        console.log(res);
+        wx.showToast({
+          title: '创建队伍成功',
+          icon:'success',
+          duration:2000
+        }),
+       that.setData(
+          {form_info:''},
+          
+       )  
+      },
     })
+
+
+  },
+
+
+  /*比赛名称*/
+
+  pickerChangeMatches(e) {
+    var index=this.data.index
+    this.setData(
+      { index: e.detail.value},
+      )
+    console.log('比赛复选框的选择:' + e.detail.value);
+    console.log('比赛值为：' + this.data.question[index])
+    this.setData(
+      { match: this.data.question[index] }
+    )
+    console.log(this.data.question);
+    //console.log(this.data.match);
+  },
+
+  /*比赛需求*/
+
+  checkboxChangeNeed(e) {
+    console.log('需求复选框的选择:' + e.detail.value);
+    this.setData({ need: e.detail.value })
   },
 
 })
