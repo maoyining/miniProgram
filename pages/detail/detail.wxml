@@ -1,6 +1,6 @@
 <!--pages/detail/detail.wxml-->
-<view>
-<image class="img_begin" src="/static/images/begin.jpg"/>
+<view class="content">
+<!-- <image class="img_begin" src="/static/images/begin.jpg"/> -->
 
 
 <import src="../../wxParse/wxParse.wxml"/>
@@ -9,12 +9,27 @@
         <image src='/static/images/share.png'></image>
 </button>  -->
 <view>
-        <view>
-        <image class="" src="/static/images/collection.png"/>
-        <image src="/static/images/share.png"/>
+        <!-- <view>
+        <image class="image_begin" src="/static/images/end.jpg"/>
+        </view> -->
+        
+        <view class="buttom_tar">
+
+                <button bindtap="click1"> 
+                <image class="little_icon"  src="{{imgUrls1}}"/>
+                </button>
+
+                <button bindtap="click2"> 
+                <image class="little_icon"  src="{{imgUrls2}}"/>
+                </button>
+
+                <button open-type="share" > 
+                <image class="little_icon" src="{{imgUrls3}}"/>
+                </button>
+
         </view>
-        <view class="line">
-        <image src="/static/images/end.jpg"/>  
-        </view>
+
+        
+        
 </view>
 </view>
