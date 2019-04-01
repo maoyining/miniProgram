@@ -1,4 +1,5 @@
 <!--home.wxml-->
+<view class="back">
 <import src='/pages/template/list_home_cmp.wxml'/>
 <swiper
   indicator-dots="{{indicatorDots}}"
@@ -15,9 +16,9 @@
   </block>
 </swiper>
 
-<block wx:for="{{information}}" wx:key="{{index}}">
-<view catchtap="toDetail" data-index='{{index}}'>
-<template is="msgItem" data="{{...item}}"/>
+  <block wx:for="{{information}}" wx:key="{{index}}">
+    <view class="grey" catchtap="toDetail" data-index='{{index}}'>
+    <template is="msgItem" data="{{...item}}"/>
+    </view>
+  </block>
 </view>
-</block>
-

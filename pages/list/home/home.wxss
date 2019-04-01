@@ -1,4 +1,10 @@
 /**index.wxss**/
+.back{
+  background-color:#e9e6e679;
+}
+.grey{
+  background-color:white;
+}
 @import '/pages/template/list_home_cmp.wxss';
 swiper{
   width:100%;
