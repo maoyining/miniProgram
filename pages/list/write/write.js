@@ -13,6 +13,15 @@ Page({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     index:0,
+    items: [
+      { name: 'USA', value: '美国' },
+      { name: 'CHN', value: '中国', checked: 'true' },
+      { name: 'BRA', value: '巴西' },
+      { name: 'JPN', value: '日本' },
+      { name: 'ENG', value: '英国' },
+      { name: 'TUR', value: '法国' },
+    ]
+  
   },
   //事件处理函数
   bindViewTap: function() {
@@ -94,11 +103,11 @@ Page({
   /*比赛名称*/
 
   pickerChangeMatches(e) {
-    var index=this.data.index
+    console.log('比赛复选框的选择:' + e.detail.value);
+    var index=e.detail.value;
     this.setData(
       { index: e.detail.value},
       )
-    console.log('比赛复选框的选择:' + e.detail.value);
     console.log('比赛值为：' + this.data.question[index])
     this.setData(
       { match: this.data.question[index] }

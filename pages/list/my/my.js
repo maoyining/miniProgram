@@ -137,8 +137,54 @@ Page({
     wx.stopPullDownRefresh()
   },
 
-  onChangeShowStateTeam: function () {
+  onChangeShowStateTeam: function (e) {
     var that = this;
+    
     that.setData({ showView1: (!that.data.showView1) })
-  }
+
+  },
+  /**
+  * postKey:提交查询条件，储存为key
+  */
+  postKey: function (e) {
+    console.log(e.detail.value.key)
+    this.setData({ key: e.detail.value.key })
+    /**
+ * 根据key值查询所需的团队
+ * key:任意关键字（寻找匹配项队名，比赛名，队伍ID,tag)
+ * page:页码
+ * rpp:每页记录数,最大数为20
+ */
+
+
+    var that = this;
+    console.log(this.data.key);
+    wx.request({
+      url: 'https://hducp.hduhelp.com/teams',
+      method: 'GET',
+      data: {
+        page: '1',
+        rpp: '20',
+        key: this.data.key
+      },
+      header: {
+        'Authorization': 'token ' + app.globalData.token,
+        'content-type': "application/json; charset='utf-8'"
+      },
+      success: function (res) {
+        console.log(res);
+       that.setData({ id: res.data.data[0].id });
+       console.log(that.data.id);
+        console.log(res);
+        wx.navigateTo({
+          url: '/pages/list/my/teamDetail/teamDetail?id=' + that.data.id,
+        })
+
+      }
+    })
+  },
+
+
+
+
 })
