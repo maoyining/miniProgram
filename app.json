@@ -9,7 +9,8 @@
     
     "pages/detail/detail",
     "pages/list/my/teamDetail/teamDetail",
-    "pages/list/my/changeTeam/changeTeam"
+    "pages/list/my/changeTeam/changeTeam",
+    "pages/teamList/teamList"
   ],
   "window": {
     "backgroundTextStyle": "light",
