@@ -15,10 +15,10 @@ Page({
   ChangeTeam: function (e) {
     var that = this;
     var id=this.data.teamID;
-    console.log(that.data.teamID);
-    console.log(that.data.match);
-    console.log(e.detail.value);
-    console.log(that.data.need[1]);
+    console.log( 'teamID:'+that.data.teamID);
+    console.log('MATCH'+that.data.match);
+    console.log('表单所有值'+e.detail.value);
+    console.log('需求'+that.data.need);
     wx.request({
       url: 'https://hducp.hduhelp.com/team',
       header: {
@@ -35,11 +35,12 @@ Page({
         "memberNow": parseInt(e.detail.value.memberNow),
         "memberTotal": parseInt(e.detail.value.memberTotal),
         "desc": e.detail.value.desc,
-        "need": that.data.need[1],
+        "need": that.data.need,
         "contact": e.detail.value.contact,
         "status": 1
       },
       success(res) {
+        console.log(res);
         console.log('success');
         wx.showToast({
           title: '修改队伍成功',

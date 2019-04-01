@@ -13,7 +13,7 @@
   </view>
   <view class="cu-form-group">
     <view class='title'>简短需求</view>
-    <div  class='radius' name='tag' >{{TeamInformation.name}}</div>
+    <div  class='radius' name='tag' >{{TeamInformation.tag}}</div>
   </view>
   <view class="cu-form-group">
     <view class='title'>队伍目前人数</view>
