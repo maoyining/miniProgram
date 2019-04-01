@@ -41,6 +41,11 @@ Page({
       },
       success(res) {
         console.log('success');
+        wx.showToast({
+          title: '修改队伍成功',
+          icon: 'success',
+          duration: 2000
+        })
       },
 
     })
@@ -66,6 +71,11 @@ Page({
       success: function (res) {
         console.log(res);
         //that.setData({ TeamInformation: res.data.data });
+        wx.showToast({
+          title: '已删除队伍',
+          icon: 'success',
+          duration: 2000
+        })
       }
     })
 

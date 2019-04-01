@@ -32,18 +32,20 @@
       <button class='cu-btn content'bindtap='onChangeShowStateTeam' >
         <text class='icon-btn text-olive'></text>
         <text class='text-grey'>请输入查询条件查询队伍</text>
+
       </button>
       </view>
 
-      <!-- <view class="hide{{showView1?'show':''}}">-->
-       <view class="cu-item {{menuArrow?'arrow':''}}">
-          <button class='cu-btn content' >
-            <text class='icon-discoverfill text-orange'></text>
-            <text class='text-grey'>联系我们</text>
-          </button>
+      <view class="hide{{showView1?'show':''}}">
+        <form bindsubmit='postKey' >
+       <view class="cu-form-group margin-top">
+       <view class='title'>查询条件</view>
+        <input  class='radius' name='key' ></input>
         </view>
-       <!-- </view>-->
-    
+         <button class="weui-btn" type="primary" form-type='submit'>提交</button>
+    </form>
+       </view>
+   
 
   <!--在使用过程中，有问题请联系我们-->
         <view class="cu-item {{menuArrow?'arrow':''}}">
@@ -54,12 +56,6 @@
         </view>
  
   </view>
-
-
-
-
-
-
 
 
  
