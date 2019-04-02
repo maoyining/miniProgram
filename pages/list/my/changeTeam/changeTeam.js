@@ -19,6 +19,14 @@ Page({
     console.log('MATCH'+that.data.match);
     console.log('表单所有值'+e.detail.value);
     console.log('需求'+that.data.need);
+    var str = '';
+    
+    var i;
+    for (i = 0; i < that.data.need.length - 1; i++) {
+      console.log(that.data.need[i]);
+      str = str + that.data.need[i] + ' ';
+    }
+    str = str + that.data.need[i];
     wx.request({
       url: 'https://hducp.hduhelp.com/team',
       header: {
@@ -35,18 +43,32 @@ Page({
         "memberNow": parseInt(e.detail.value.memberNow),
         "memberTotal": parseInt(e.detail.value.memberTotal),
         "desc": e.detail.value.desc,
-        "need": that.data.need,
+        "need": str,
         "contact": e.detail.value.contact,
         "status": 1
       },
       success(res) {
         console.log(res);
+        if(res.statusCode==400){
+          wx.showToast({
+            title: '修改队伍失败',
+            duration:2000
+          })
+        }
+        if(res.statusCode==403){
+          wx.showToast({
+            title: '没有权限修改他人队伍',
+            duration:2000
+          })
+        }
+        else{
         console.log('success');
         wx.showToast({
           title: '修改队伍成功',
           icon: 'success',
           duration: 2000
         })
+        }
       },
 
     })
@@ -72,11 +94,21 @@ Page({
       success: function (res) {
         console.log(res);
         //that.setData({ TeamInformation: res.data.data });
+        if(res.statusCode==200){
         wx.showToast({
           title: '已删除队伍',
           icon: 'success',
           duration: 2000
         })
+      }
+      
+      else{
+        wx.showToast({
+          title: '删除失败',
+          duration:2000
+
+        })
+      }
       }
     })
 
@@ -107,6 +139,9 @@ Page({
       success: function (res) {
         console.log(res.data.data);
         that.setData({ TeamInformation: res.data.data });
+        console.log(res.data.data.match);
+        that.setData({ match: res.data.data.match});
+        console.log("传入得match值"+that.data.match);
       }
     })
 
@@ -135,7 +170,7 @@ Page({
     console.log('比赛复选框的选择:' + e.detail.value);
     console.log('比赛值为：' + this.data.question[index])
     this.setData(
-      { match: JSON.stringify(this.data.question[index]) }
+      { match: this.data.question[index] }
     )
     console.log(this.data.question);
     console.log(this.data.match);
