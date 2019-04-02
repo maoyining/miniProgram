@@ -173,13 +173,23 @@ Page({
       },
       success: function (res) {
         console.log(res);
+        if (res.statusCode == 404){
+          wx.showToast({
+            title: '没有查询到队伍',
+            icon: 'fail',
+            duration: 2000
+          })
+        }
+        else{
+          that.setData({ information: res.data.data });
        that.setData({ id: res.data.data[0].id });
        console.log(that.data.id);
         console.log(res);
         wx.navigateTo({
           url: '/pages/list/my/teamDetail/teamDetail?id=' + that.data.id,
         })
-
+        
+        }
       }
     })
   },

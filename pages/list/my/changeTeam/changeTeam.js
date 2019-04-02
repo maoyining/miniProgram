@@ -35,7 +35,7 @@ Page({
         "memberNow": parseInt(e.detail.value.memberNow),
         "memberTotal": parseInt(e.detail.value.memberTotal),
         "desc": e.detail.value.desc,
-        "need": that.data.need,
+        "need": that.data.need[1],
         "contact": e.detail.value.contact,
         "status": 1
       },
@@ -135,7 +135,7 @@ Page({
     console.log('比赛复选框的选择:' + e.detail.value);
     console.log('比赛值为：' + this.data.question[index])
     this.setData(
-      { match: JSON.stringify(this.data.question[index]) }
+      { match: this.data.question[index] }
     )
     console.log(this.data.question);
     console.log(this.data.match);

@@ -3,11 +3,7 @@
 const app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userName:'毛忆宁',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+   
     teamData:{},
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
@@ -58,10 +54,11 @@ Page({
   CreateTeam: function (e) {
     var that = this;
     console.log(this.data.match);
-    var str = ''
+    var str = this.data.need[0];
     var i;
-    for (i = 0; i < this.data.need.length; i++) {
-      str = str + ' ' + this.data.need[i];
+    for (i =1; i < this.data.need.length; i++) {
+    
+      str = str + this.data.need[i]+' ';
     }
     wx.request({
       url: 'https://hducp.hduhelp.com/team',
