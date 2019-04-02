@@ -3,7 +3,7 @@
 <view>
     <block wx:for="{{information}}" wx:key="{{index}}">
         <view class="grey" data-index='{{index}}'catchtap="toTeamDetail">
-        <template is="teamItem" data="{{...item}}"/>
+            <template is="teamItem" data="{{...item}}"/>
         </view>
     </block>
 </view>
