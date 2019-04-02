@@ -4,7 +4,9 @@
 
     <view id='two'>
         <block wx:for="{{information}}" wx:key="{{index}}">
+        <view catchtap="toTeamList"  data-index='{{index}}'>
         <template is="msgItem_sort" data="{{...item}}"/>
+        </view>
         </block>
     </view>
 

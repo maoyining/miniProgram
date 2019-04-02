@@ -12,19 +12,19 @@ Page({
     information:[
       { 
           
-        title:'#大创',
+        title:'#小程序设计大赛小程序组',
         url:'/static/images/xm_1.jpg'},
       {
         
-        title:'#省新苗',
+        title:'#小程序设计大赛小游戏组',
         url:'/static/images/xm_1.jpg'},
       {
         
-        title:'#数学建模',
+        title:'#程序设计大赛',
         url:'/static/images/xm_1.jpg'},
       {
         
-        title:'#电商',
+        title:'#巴拉巴拉巴拉',
         url:'/static/images/xm_1.jpg'},
       
       
@@ -74,5 +74,14 @@ Page({
   },
   clickMe() {
     this.setData({userName: ' lalaland!'})
+  },
+  toTeamList(event){
+    console.log(event)
+    //获取点击跳转对应的下标，console.log真是一个很好的东西
+    let index =event.currentTarget.dataset.index
+    console.log(event._relatedInfo)
+    wx.navigateTo({
+      url:'/pages/teamList/teamList?index='+index
+    })
   }
 })

@@ -9,11 +9,10 @@
     </view>
 
     <view class="item2">
-    <image class="cmp_image"src="{{url}}"/>
+        <image class="cmp_image"src="{{url}}"/>
     </view>
 
-
 </view>
-<!-- <view class="divLine"></view> -->
+
 
 </template>
