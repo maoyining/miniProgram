@@ -9,14 +9,7 @@ Page({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     index:0,
-    items: [
-      { name: 'USA', value: '美国' },
-      { name: 'CHN', value: '中国', checked: 'true' },
-      { name: 'BRA', value: '巴西' },
-      { name: 'JPN', value: '日本' },
-      { name: 'ENG', value: '英国' },
-      { name: 'TUR', value: '法国' },
-    ]
+    
   
   },
   //事件处理函数
@@ -40,7 +33,11 @@ Page({
        
         that.setData({ question: res.data.matches });
         that.setData({ needs: res.data.need });
+        that.setData({match:that.data.question[0]});
         console.log(that.data.question);
+        console.log("比赛默认值："+that.data.match);  
+        that.setData({str:res.data.need[0]});
+        console.log("需求默认值："+that.data.str);
        
       },
     })
@@ -54,12 +51,14 @@ Page({
   CreateTeam: function (e) {
     var that = this;
     console.log(this.data.match);
-    var str = this.data.need[0];
+    var str='';
+    console.log("提交时需求默认值：" + that.data.str);
     var i;
-    for (i =1; i < this.data.need.length; i++) {
-    
-      str = str + this.data.need[i]+' ';
+    for (i =0; i < that.data.need.length-1; i++) {
+      console.log(that.data.need[i]);
+      str =str + that.data.need[i]+' ';
     }
+    str=str+that.data.need[i];
     wx.request({
       url: 'https://hducp.hduhelp.com/team',
       header: {
@@ -81,15 +80,20 @@ Page({
       success(res) {
         // var teamID = res.data.data.teamID;
         console.log(res);
-        wx.showToast({
-          title: '创建队伍成功',
-          icon:'success',
-          duration:2000
-        }),
-       that.setData(
-          {form_info:''},
-          
-       )  
+        if(res.statusCode!=200){
+          wx.showToast({
+            title: '创建队伍失败',
+            duration: 2000
+          })
+        }
+        else{
+            wx.showToast({
+              title: '创建队伍成功',
+              icon:'success',
+              duration:2000
+            }),
+            that.setData({form_info:''}) 
+        } 
       },
     })
 

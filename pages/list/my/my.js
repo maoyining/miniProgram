@@ -4,11 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userName:'毛忆宁',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+   
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     showView:true,
@@ -181,18 +177,49 @@ Page({
           })
         }
         else{
-          that.setData({ information: res.data.data });
-       that.setData({ id: res.data.data[0].id });
-       console.log(that.data.id);
-        console.log(res);
-        wx.navigateTo({
+          that.setData({ Information1: res.data.data });
+          
+        /* that.setData({ id: res.data.data[0].id });
+         console.log(that.data.id);
+         console.log(res);
+         wx.navigateTo({
           url: '/pages/list/my/teamDetail/teamDetail?id=' + that.data.id,
         })
-        
+        */
         }
+
       }
     })
   },
+
+  /**
+  * getTeam1获取我创建的团队信息（单条详情）
+  * 需要传递参数teamID
+  */
+  getTeam1: function (e) {
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.Information1[index].id,
+    })
+    wx.request({
+      url: 'https://hducp.hduhelp.com/team/my',
+      method: 'GET',
+      data: {
+        teamID: this.data.Information1[index].id
+      },
+      header: {
+        'Authorization': 'token ' + app.globalData.token,
+        'content-type': "application/json; charset='utf-8'"
+      },
+      success: function (res) {
+        console.log(res);
+
+      }
+    })
+  },
+
 
 
 
