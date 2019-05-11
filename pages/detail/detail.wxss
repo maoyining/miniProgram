@@ -1,6 +1,8 @@
 /* pages/detail/detail.wxss */
 .content{
-   margin-bottom:100rpx
+   margin-bottom:100rpx;
+   margin-left:50rpx;
+   margin-right:50rpx;
 }
 .img_begin{
    width:100%;

@@ -2,6 +2,7 @@
 @import 'style/weui.wxss';
 @import 'style/colorui.wxss';
 @import 'style/icon.wxss';
+@import "/wxParse/wxParse.wxss";
 .container {
   height: 100%;
   display: flex;

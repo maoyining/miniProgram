@@ -38,7 +38,7 @@ Page({
     // str=str+that.data.need[i];
     console.log(app.globalData.openid)
     wx.request({
-      url: 'http://localhost:3000/team',
+      url: app.globalData.host+'/team',
       method: 'POST',
       data:
       {

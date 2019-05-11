@@ -1,5 +1,5 @@
 <!--pages/detail/detail.wxml-->
-<view class="content">
+<view class="content" >
 <!-- <image class="img_begin" src="/static/images/begin.jpg"/> -->
 
 
