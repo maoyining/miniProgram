@@ -78,24 +78,16 @@ Page({
     }
     //请求文章列表数据
     wx.request({
-      url:'https://hducp.hduhelp.com/passages',
-      data:{
-        page:1,
-        rpp:20
-        //id:idArr[index]
-      },
+      url:app.globalData.host+"/articles",
+  
       method:'Get',
-      header:{
-        "Authorization":'token '+app.globalData.token,
-        "content-type":"application/json" 
-      },
+      
       success:function(res){
         //let article=res.data.data.content
-        console.log(res.data.data)
+        console.log(res.data.info)
         //WxParse.wxParse('article', 'html', article, that,5)
-        that.setData({information: res.data.data });
+        that.setData({information: res.data.info });
       }
-
     })
     
 

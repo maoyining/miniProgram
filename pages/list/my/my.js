@@ -65,21 +65,6 @@ Page({
     wx.navigateTo({
       url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information[index].id,
     })
-    wx.request({
-      url: 'https://hducp.hduhelp.com/team/my',
-      method: 'GET',
-      data: {
-        teamID: this.data.information[index].id
-      },
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
-      success: function (res) {
-        console.log(res);
-
-      }
-    })
   },
 
   getUserInfo: function(e) {
@@ -103,20 +88,16 @@ Page({
       */
     var that = this;
     wx.request({
-      url: 'https://hducp.hduhelp.com/teams/my',
-      method: 'GET',
+      url: app.globalData.host+'/myteams',
+      method: 'POST',
       data: {
-        page: 1,
-        rpp: 5
+        openid:app.globalData.openid
       },
-      header: {
-        "Authorization": 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
+     
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200)
-          that.setData({ information: res.data.data });
+          that.setData({ information: res.data.info });
         else {
           wx.showToast({
             title: '您还没有团队',
@@ -145,27 +126,14 @@ Page({
   postKey: function (e) {
     console.log(e.detail.value.key)
     this.setData({ key: e.detail.value.key })
-    /**
- * 根据key值查询所需的团队
- * key:任意关键字（寻找匹配项队名，比赛名，队伍ID,tag)
- * page:页码
- * rpp:每页记录数,最大数为20
- */
-
 
     var that = this;
     console.log(this.data.key);
     wx.request({
-      url: 'https://hducp.hduhelp.com/teams',
-      method: 'GET',
+      url: app.globalData.host+"/search",
+      method: 'POST',
       data: {
-        page: '1',
-        rpp: '20',
-        key: this.data.key
-      },
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
+        keyword: this.data.key
       },
       success: function (res) {
         console.log(res);
@@ -177,15 +145,9 @@ Page({
           })
         }
         else{
-          that.setData({ Information1: res.data.data });
-          
-        /* that.setData({ id: res.data.data[0].id });
-         console.log(that.data.id);
-         console.log(res);
-         wx.navigateTo({
-          url: '/pages/list/my/teamDetail/teamDetail?id=' + that.data.id,
-        })
-        */
+         console.log(res.data.info) 
+          that.setData({ Information1: res.data.info });
+  
         }
 
       }
@@ -202,21 +164,6 @@ Page({
     console.log(index);
     wx.navigateTo({
       url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.Information1[index].id,
-    })
-    wx.request({
-      url: 'https://hducp.hduhelp.com/team/my',
-      method: 'GET',
-      data: {
-        teamID: this.data.Information1[index].id
-      },
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
-      success: function (res) {
-        console.log(res);
-
-      }
     })
   },
 

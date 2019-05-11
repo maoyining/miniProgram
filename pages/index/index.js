@@ -5,38 +5,11 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
-    userName:'毛忆宁',
-    userInfo: {},
+    userName: '毛忆宁',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  getToken:function(){
-    wx.request({
-      url:'https://hducp.hduhelp.com/passage',
-      data:{
-        //page:1,
-       // rpp:20
-        id:'nfieajlfkvos'
-      },
-      method:'Get',
-      header:{
-        "Authorization":'token '+app.globalData.token,
-        "content-type":"application/json" 
-      },
-      success:function(res){
-        console.log(res);
-      }
 
-    })
-
-    
-  },
   onLoad: function () {
 
     if (app.globalData.userInfo) {
@@ -44,7 +17,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -66,27 +39,80 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    wx.login({
+      success: function (res) {
+        let userInfo = app.globalData.userInfo
+        wx.request({
+          //url: 'http://118.25.136.149:8001/resistance',
+          url: app.globalData.host + '/users',
+          data: {
+            code: res.code,
+            appID: 'wxfd0ba5ed8c9d10b1',
+            secret: '93331043ea682f88615207608d21530c',
+            nickName: userInfo.nickName,
+            avatarUrl: userInfo.avatarUrl
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+            app.globalData.openid = res.data.info;
+          }
+        })
+      }
+    })
   },
-  clickMe() {
-    this.setData({userName: ' lalaland!'})
-  },
-  handleClick(){
+try(){
+  var that=this
+  wx.request({
+    url: 'http://118.25.136.149:8001/resistance',
+    //url: app.globalData.host + '/users',
+    data: {
+    
+    },
+    method: 'GET',
+    success: function (res) {
+      console.log(res.data[0])
+      that.setData({ trydata: res.data[0].pname });
+    }
+  })
+}
+,
+  handleClick() {
     //navigateTo保留当前页面
     //这里有一个坑点,如果跳转不过去，就要注意了，三检查：
     //检查你要跳转的位置是否在app.js中注册过。
     //检查你要跳转的地址是否有误。经常都是因为少写或者多写使得跳转无效。
     //检查你要跳转的位置是否位于TabBar中，如果是的话，要使用wx.switchTab 来跳转界面
-    wx.switchTab({
-      url:"/pages/list/home/home"
+    wx.login({
+      success: function (res) {
+
+        wx.request({
+          //url: 'http://118.25.136.149:8001/resistance',
+          url: app.globalData.host + '/openid',
+          data: {
+            code: res.code,
+            appID: 'wxfd0ba5ed8c9d10b1',
+            secret: '93331043ea682f88615207608d21530c',
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res.data.info)
+            app.globalData.openid = res.data.info;
+          }
+        })
+      }
     })
-    const token=app.globalData.token;
+    wx.switchTab({
+      url: "/pages/list/home/home"
+    })
+    const token = app.globalData.token;
     console.log(token)
   }
 })

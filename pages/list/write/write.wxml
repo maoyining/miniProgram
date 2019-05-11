@@ -1,48 +1,31 @@
-
-<form bindsubmit='CreateTeam' >
-   <view class="cu-form-group margin-top">
+<form bindsubmit='CreateTeam'>
+  <view class="cu-form-group margin-top">
     <view class='title'>比赛名称</view>
-    <picker bindchange="pickerChangeMatches" value="{{index}}" range="{{question}}">
-      <view class="picker">
-        {{question[index]}}
-      </view>
-    </picker>
+    <input class='radius' name='cname' value='{{form_info}}'></input>
   </view>
-
   <view class="cu-form-group margin-top">
     <view class='title'>队伍名称</view>
-    <input  class='radius' name='name' value='{{form_info}}'></input>
-  </view>
-  <view class="cu-form-group">
-    <view class='title'>简短需求</view>
-    <input  class='radius' name='tag'  value='{{form_info}}'></input>
+    <input class='radius' name='tname' value='{{form_info}}'></input>
   </view>
   <view class="cu-form-group">
     <view class='title'>队伍目前人数</view>
-    <input  class='radius' type='number' name='memberNow'  value='{{form_info}}'></input>
+    <input class='radius' type='number' name='memberNow' value='{{form_info}}'></input>
   </view>
   <view class="cu-form-group">
     <view class='title'>队伍期望人数</view>
-    <input  class='radius' type='number' name='memberTotal'  value='{{form_info}}'></input>
+    <input class='radius' type='number' name='memberTotal' value='{{form_info}}'></input>
   </view>
-   <view class="cu-form-group">
-     <view class='title'>队伍需求</view>
-   </view>
-   <view class="cu-form-group">
-        <checkbox-group  bindchange="checkboxChangeNeed"> 
-            <label class='checkbox' wx:for="{{needs}}" wx:key="{{index}}">
-                <checkbox value='{{item}}' checked="{{item[index].checked}}">
-                  {{item}}</checkbox>
-             </label>
-         </checkbox-group>
-   </view>
+  <view class="cu-form-group">
+    <view class='title'>队伍需求</view>
+    <input class='radius' type='string' name='need' value='{{form_info}}'></input>
+  </view>
   <view class="cu-form-group">
     <view class='title'>队伍简介</view>
-    <textarea class='radius' name='desc'  value='{{form_info}}'></textarea>
-    </view>
- <view class="cu-form-group">
-    <view class='title'>联系人的微信</view>
-    <textarea class='radius' name='contact'  value='{{form_info}}'></textarea>
-    </view>
-   <button class="weui-btn" type="primary" form-type='submit'>提交</button>
+    <textarea class='radius' name='desc' value='{{form_info}}'></textarea>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>联系人微信</view>
+    <input class='radius' type='string' name='contact' value='{{form_info}}'></input>
+  </view>
+  <button class="weui-btn" type="primary" form-type='submit'>提交</button>
 </form>

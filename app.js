@@ -64,6 +64,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    token:''
+    token:'',
+    openid:'',
+    host:'http://localhost:3000'
   }
 })

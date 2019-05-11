@@ -8,30 +8,29 @@ Page({
   data: {
     information:[
       { 
-          
         match:'小程序大赛',
         name:'菜鸡一队',
         need:'前端  后台',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/xm_1.jpg'
+      },
       {
-        
         match:'小程序大赛',
         name:'菜鸡二队',
         need:'算法设计 前端',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/xm_1.jpg'
+      },
       {
-        
         match:'小程序大赛',
         name:'菜鸡三队',
         need:'人工智能',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/xm_1.jpg'
+      },
       {
-        
         match:'小程序大赛',
         name:'菜鸡四队',
         need:'后台',
-        url:'/static/images/xm_1.jpg'},
-      
+        url:'/static/images/xm_1.jpg'
+      },
       
     ]
   },

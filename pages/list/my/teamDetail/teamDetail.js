@@ -1,5 +1,5 @@
 // pages/list/my/teamDetail/teamDetail.js
-var app=getApp();
+var app = getApp();
 Page({
 
   /**
@@ -10,9 +10,9 @@ Page({
   },
 
   ChangeTeam: function (e) {
-    console.log('跳转的id'+this.data.id);
+    console.log('跳转的id' + this.data.id);
     wx.navigateTo({
-      url: '/pages/list/my/changeTeam/changeTeam?id='+this.data.id,
+      url: '/pages/list/my/changeTeam/changeTeam?id=' + this.data.id,
     })
   },
 
@@ -26,19 +26,19 @@ Page({
     console.log(this.data.id);
     var id = this.data.id;
     wx.request({
-      url: 'https://hducp.hduhelp.com/team?teamID=' + this.data.id,
-      method: 'DELETE',
-
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
+      //还需修改
+      // url: 'https://hducp.hduhelp.com/team?teamID=' + ,
+      url: app.globalData.host + "/delete",
+      method: 'POST',
+      data: {
+        teamID: id
       },
       success: function (res) {
         console.log(res);
         //that.setData({ TeamInformation: res.data.data });
         wx.showToast({
           title: '删除成功',
-          icon:'success',
+          icon: 'success',
         })
         console.log('已删除');
         wx.switchTab({
@@ -59,35 +59,19 @@ Page({
     this.setData({ id: id });
     var that = this;
     wx.request({
-      url: 'https://hducp.hduhelp.com/team/my',
-      method: 'GET',
+      url: app.globalData.host + '/myteam',
+      method: 'POST',
       data: {
+        openid: app.globalData.openid,
         teamID: id
       },
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
       success: function (res) {
-        console.log(res.data.data);
-        that.setData({ TeamInformation: res.data.data });
-        that.setData({need:res.data.data.need});
+        console.log(res.data.info[0]);
+        that.setData({ TeamInformation: res.data.info[0] });
+        // that.setData({need:res.data.info.need});
       }
     })
-
-    wx.request({
-      url: 'https://hducp.hduhelp.com/team/question',
-      header: {
-        "Authorization": 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
-      method: 'GET',
-      success(res) {
-        that.setData({ question: res.data.matches });
-        that.setData({ needs: res.data.need });
-      },
-    })
-
+    //console.log(TeamInformation)
   },
 
   /**
@@ -122,7 +106,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-     
+
   },
 
   /**

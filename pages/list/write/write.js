@@ -20,80 +20,62 @@ Page({
   },
   onLoad: function () {
 
-    /*请求比赛名称以及需求*/
-    var that = this;
-    wx.request({
-      url: 'https://hducp.hduhelp.com/team/question',
-      header: {
-        "Authorization": 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
-      method: 'GET',
-      success(res) {
-       
-        that.setData({ question: res.data.matches });
-        that.setData({ needs: res.data.need });
-        that.setData({match:that.data.question[0]});
-        console.log(that.data.question);
-        console.log("比赛默认值："+that.data.match);  
-        that.setData({str:res.data.need[0]});
-        console.log("需求默认值："+that.data.str);
-       
-      },
-    })
-  
-   
   },
 
   /**
  * CreateTeam --提交队伍表单，注意每个数据均不能为空
  */
   CreateTeam: function (e) {
-    var that = this;
-    console.log(this.data.match);
-    var str='';
-    console.log("提交时需求默认值：" + that.data.str);
-    var i;
-    for (i =0; i < that.data.need.length-1; i++) {
-      console.log(that.data.need[i]);
-      str =str + that.data.need[i]+' ';
-    }
-    str=str+that.data.need[i];
+    // var that = this;
+    // console.log(this.data.match);
+    // var str='';
+    // console.log("提交时需求默认值：" + that.data.str);
+    // var i;
+    // for (i =0; i < that.data.need.length-1; i++) {
+    //   console.log(that.data.need[i]);
+    //   str =str + that.data.need[i]+' ';
+    // }
+    // str=str+that.data.need[i];
+    console.log(app.globalData.openid)
     wx.request({
-      url: 'https://hducp.hduhelp.com/team',
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
+      url: 'http://localhost:3000/team',
       method: 'POST',
       data:
       {
-        "match": that.data.match,
-        "name": e.detail.value.name,
-        "tag": e.detail.value.tag,
-        "memberNow": parseInt(e.detail.value.memberNow),
-        "memberTotal": parseInt(e.detail.value.memberTotal),
-        "desc": e.detail.value.desc,
-        "need": str,//that.data.need[0],
-        "contact": e.detail.value.contact
+        // "match": that.data.match,
+        // "name": e.detail.value.name,
+        // "tag": e.detail.value.tag,
+        // "memberNow": parseInt(e.detail.value.memberNow),
+        // "memberTotal": parseInt(e.detail.value.memberTotal),
+        // "desc": e.detail.value.desc,
+        // "need": str,//that.data.need[0],
+        // "contact": e.detail.value.contact
+          "openid":app.globalData.openid,
+          "tname":e.detail.value.tname,
+          "memberNow":parseInt(e.detail.value.memberNow),
+          "memberTotal":parseInt(e.detail.value.memberTotal),
+          "contact":e.detail.value.contact,
+          "desc":e.detail.value.desc,
+          "need":e.detail.value.need,
+          "cname":e.detail.value.cname
       },
       success(res) {
         // var teamID = res.data.data.teamID;
         console.log(res);
-        if(res.statusCode!=200){
-          wx.showToast({
-            title: '创建队伍失败',
-            duration: 2000
-          })
-        }
-        else{
-            wx.showToast({
-              title: '创建队伍成功',
-              icon:'success',
-              duration:2000
-            }),
-            that.setData({form_info:''}) 
-        } 
+        // if(res.statusCode!=200){
+        //   wx.showToast({
+        //     title: '创建队伍失败',
+        //     duration: 2000
+        //   })
+        // }
+        // else{
+        //     wx.showToast({
+        //       title: '创建队伍成功',
+        //       icon:'success',
+        //       duration:2000
+        //     }),
+        //     that.setData({form_info:''}) 
+        // } 
       },
     })
 

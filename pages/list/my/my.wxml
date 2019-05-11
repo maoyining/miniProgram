@@ -21,7 +21,7 @@
       <view class="hide{{showView?'show':''}}">
         <block wx:for="{{information}}" wx:key="{{item.id}}">
               <button bindtap='getTeam' data-index='{{index}}'>
-                {{item.name}}
+                {{item.tname}}
               </button>
           </block>
         </view>
@@ -46,7 +46,7 @@
     </form>
         <block wx:for="{{Information1}}" wx:key="{{item.id}}">
               <button bindtap='getTeam1' data-index='{{index}}'>
-                {{item.name}}
+                {{item.tname}}
               </button>
           </block>
        </view>

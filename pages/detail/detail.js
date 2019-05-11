@@ -55,24 +55,23 @@ click2:function(){
   onLoad: function (options) {
       //这个options会收集你传过来的参数
       let index=options.index
+      index=parseInt(index)
+      index=index+1
       console.log(index)
-      let idArr=['nfieajlfkvos','qwertyuiasdfghjk','3','6']
+     // let idArr=['nfieajlfkvos','qwertyuiasdfghjk','3','6']
 
       var that=this
       wx.request({
-        url:'https://hducp.hduhelp.com/passage',
+        url:app.globalData.host+"/article/content",
         data:{
           // page:2,
           //rpp:20
-          id:idArr[index]
+          pid:index
         },
-        method:'Get',
-        header:{
-          "Authorization":'token '+app.globalData.token,
-          "content-type":"application/json" 
-        },
+        method:'POST',
+       
         success:function(res){
-          let article=res.data.data.content
+          let article=res.data
           console.log(article)
           WxParse.wxParse('article', 'html', article, that,5)
          // that.setData({detailObj: res.data.data });
