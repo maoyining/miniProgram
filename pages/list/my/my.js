@@ -107,6 +107,17 @@ Page({
       }
     })
   },
+
+  /**
+   * allTeams 管理员操作审核，将跳转到一个新的页面
+   */
+
+  allTeams(){
+    console.log("我是管理员");
+    wx.navigateTo({
+      url: '/pages/list/my/admin/admin',
+    })
+  },
   /**
    * 下拉刷新函数
    */
