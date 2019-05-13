@@ -66,6 +66,6 @@ App({
     userInfo: null,
     token:'',
     openid:'',
-    host:'https://www.cutemyn.cn'
+    host:'http://localhost:8765'//'https://www.cutemyn.cn'
   }
 })

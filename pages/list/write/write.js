@@ -26,7 +26,7 @@ Page({
  * CreateTeam --提交队伍表单，注意每个数据均不能为空
  */
   CreateTeam: function (e) {
-    // var that = this;
+     var that = this;
     // console.log(this.data.match);
     // var str='';
     // console.log("提交时需求默认值：" + that.data.str);
@@ -42,14 +42,6 @@ Page({
       method: 'POST',
       data:
       {
-        // "match": that.data.match,
-        // "name": e.detail.value.name,
-        // "tag": e.detail.value.tag,
-        // "memberNow": parseInt(e.detail.value.memberNow),
-        // "memberTotal": parseInt(e.detail.value.memberTotal),
-        // "desc": e.detail.value.desc,
-        // "need": str,//that.data.need[0],
-        // "contact": e.detail.value.contact
           "openid":app.globalData.openid,
           "tname":e.detail.value.tname,
           "memberNow":parseInt(e.detail.value.memberNow),
@@ -62,20 +54,20 @@ Page({
       success(res) {
         // var teamID = res.data.data.teamID;
         console.log(res);
-        // if(res.statusCode!=200){
-        //   wx.showToast({
-        //     title: '创建队伍失败',
-        //     duration: 2000
-        //   })
-        // }
-        // else{
-        //     wx.showToast({
-        //       title: '创建队伍成功',
-        //       icon:'success',
-        //       duration:2000
-        //     }),
-        //     that.setData({form_info:''}) 
-        // } 
+         if(res.statusCode!=200){
+           wx.showToast({
+             title: '创建队伍失败',
+             duration: 2000
+           })
+         }
+         else{
+             wx.showToast({
+               title: '创建队伍成功',
+               icon:'success',
+               duration:2000
+             }),
+             that.setData({form_info:''}) 
+         } 
       },
     })
 
