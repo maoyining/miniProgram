@@ -1,0 +1,9 @@
+<!--pages/list/my/admin/admin.wxml-->
+<text>pages/list/my/admin/admin.wxml</text>
+<view>
+ <block wx:for="{{information}}" wx:key="{{item.id}}">
+              <button bindtap='check' data-index='{{index}}'>
+                {{item.tname}}
+              </button>
+          </block>
+  </view>

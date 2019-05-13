@@ -48,7 +48,49 @@ Page({
     })
 
   },
+/**
+ * getCheck()帖子审核函数，审核完成status=1即其他用户可查看
+ */
+getCheck(){
+  var that=this;
+  var id=that.data.id;
+  let status=1;
+  wx.request({
+    url: app.globalData.host + '',
+    method: 'POST',
+    data: {
+      openid: app.globalData.openid,
+      teamID: id
+    },
+    success:function(res){
+      console.log('审核通过');
+    }
+  })
 
+
+},
+
+  /**
+   * getUncheck()帖子审核函数，审核未通过status=2返回给用户
+   */
+  getUncheck() {
+    var that = this;
+    var id = that.data.id;
+    let status = 1;
+    wx.request({
+      url: app.globalData.host + '',
+      method: 'POST',
+      data: {
+        openid: app.globalData.openid,
+        teamID: id
+      },
+      success: function (res) {
+        console.log('审核未通过');
+      }
+    })
+
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -73,6 +115,7 @@ Page({
     })
     //console.log(TeamInformation)
   },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
