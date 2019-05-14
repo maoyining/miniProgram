@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+  openid:''
   },
 
   ChangeTeam: function (e) {
@@ -27,7 +27,6 @@ Page({
     var id = this.data.id;
     wx.request({
       //还需修改
-      // url: 'https://hducp.hduhelp.com/team?teamID=' + ,
       url: app.globalData.host + "/delete",
       method: 'POST',
       data: {
@@ -56,7 +55,7 @@ getCheck(){
   var id=that.data.id;
   let status=1;
   wx.request({
-    url: app.globalData.host + '',
+    url: app.globalData.host + '/pass',
     method: 'POST',
     data: {
       openid: app.globalData.openid,
@@ -64,6 +63,9 @@ getCheck(){
     },
     success:function(res){
       console.log('审核通过');
+      wx.showToast({
+        title: '操作成功！',
+      })
     }
   })
 
@@ -78,14 +80,17 @@ getCheck(){
     var id = that.data.id;
     let status = 1;
     wx.request({
-      url: app.globalData.host + '',
+      url: app.globalData.host + '/unpass',
       method: 'POST',
       data: {
-        openid: app.globalData.openid,
-        teamID: id
+        teamID: id,
+        openid:app.globalData.openid
       },
       success: function (res) {
         console.log('审核未通过');
+        wx.showToast({
+          title: '操作成功！',
+        })
       }
     })
 
@@ -99,12 +104,13 @@ getCheck(){
     var id = options.id;
     console.log(id);
     this.setData({ id: id });
+    this.setData({ openid:app.globalData.openid  });
     var that = this;
     wx.request({
       url: app.globalData.host + '/myteam',
       method: 'POST',
       data: {
-        openid: app.globalData.openid,
+      //  openid: app.globalData.openid,
         teamID: id
       },
       success: function (res) {

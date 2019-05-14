@@ -8,26 +8,26 @@ Page({
   data: {
     information:[
       { 
-        match:'小程序大赛',
-        name:'菜鸡一队',
+        cname:'小程序大赛',
+        tname:'菜鸡一队',
         need:'前端  后台',
         url:'/static/images/xm_1.jpg'
       },
       {
-        match:'小程序大赛',
-        name:'菜鸡二队',
+        cname:'小程序大赛',
+        tname:'菜鸡二队',
         need:'算法设计 前端',
         url:'/static/images/xm_1.jpg'
       },
       {
-        match:'小程序大赛',
-        name:'菜鸡三队',
+        cname:'小程序大赛',
+        tname:'菜鸡三队',
         need:'人工智能',
         url:'/static/images/xm_1.jpg'
       },
       {
-        match:'小程序大赛',
-        name:'菜鸡四队',
+        cname:'小程序大赛',
+        tname:'菜鸡四队',
         need:'后台',
         url:'/static/images/xm_1.jpg'
       },
@@ -39,28 +39,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // var that=this
-    // wx.request({
-    //   url:'https://hducp.hduhelp.com/teams',
-    //   data:{
-    //     key:'小程序王者',
-    //     page:1,
-    //     rpp:20
-    //     //id:idArr[index]
-    //   },
-    //   method:'Get',
-    //   header:{
-    //     "Authorization":'token '+app.globalData.token,
-    //     "content-type":"application/json" 
-    //   },
-    //   success:function(res){
-    //     //let article=res.data.data.content
-    //     console.log(res.data.data)
-    //     //WxParse.wxParse('article', 'html', article, that,5)
-    //     that.setData({information: res.data.data });
-    //   }
+    var that=this
+    
+    wx.request({
+      url:app.globalData.host+'/teams',
+      method:'Get',
+      success:function(res){
+        //let article=res.data.data.content
+        console.log(res.data.info)
+        //WxParse.wxParse('article', 'html', article, that,5)
+        that.setData({information: res.data.info });
+      }
 
-    // })
+    })
 
   },
 
@@ -112,13 +103,12 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toTeamDetail(event) {
-    console.log(event)
-    //获取点击跳转对应的下标，console.log真是一个很好的东西
-    let index =event.currentTarget.dataset.index
-    console.log(event._relatedInfo)
-    wx.navigateTo({
-      url:'/pages/teamDetail/teamDetail?index='+index
-    })
+  toTeamDetail(e) {
+    console.log(e);
+      let index = e.currentTarget.dataset.index;
+      console.log(index);
+      wx.navigateTo({
+        url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information[index].id,
+      })
   }
 })

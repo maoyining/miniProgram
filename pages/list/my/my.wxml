@@ -61,7 +61,7 @@
           </button>
         </view>
 <!--管理员页面-->
-         <view class="cu-item {{menuArrow?'arrow':''}}">
+         <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}"class="cu-item {{menuArrow?'arrow':''}}">
           <button class='cu-btn content'bindtap='allTeams' >
             <text class='icon-discoverfill text-orange'></text>
             <text class='text-grey' >管理队伍</text>

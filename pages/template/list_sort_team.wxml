@@ -4,10 +4,10 @@
 
     <view class="item1">
         <view class="cmp_font">
-            {{name}}
+            {{cname}}
         </view>
         <view class="cmp_font">
-            {{need}}
+            {{tname}}
         </view>
     </view>
 

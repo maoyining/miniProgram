@@ -24,16 +24,13 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.globalData.host + '',
-      method: 'POST',
-      data: {
-        openid: app.globalData.openid
-      },
+      url: app.globalData.host + '/unteams',
+      method: 'GET',
 
       success: function (res) {
         console.log(res);
         if (res.statusCode == 200)
-          that.setData({ information: res.data.info });
+        that.setData({ information: res.data.info });
         else {
           wx.showToast({
             title: '没有团队等待审核',

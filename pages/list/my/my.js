@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-   
+    openid:'',
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     showView:true,
@@ -26,7 +26,8 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        openid:app.globalData.openid,
       })
     } else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
