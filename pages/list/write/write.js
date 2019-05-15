@@ -37,6 +37,9 @@ Page({
   CreateTeam: function (e) {
      var that = this;
      console.log(this.data.openid);
+     //如果e.detail.value.tname,或者还有其他成员为空，
+     //则不会进行wx.request,并且跳出弹出框输入内容不为空
+     //
      wx.request({
       url: app.globalData.host+'/team',
       method: 'POST',
