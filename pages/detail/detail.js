@@ -58,7 +58,10 @@ Page({
       })
       if(this.data.openid){
       //直接跳转页面到发帖组队页面
-      console.log("跳转")
+      wx.switchTab({
+        url:'/pages/list/write/write'
+      })
+      console.log("跳转");
       }else{
       wx.login({
         success: function (res) {
@@ -81,9 +84,16 @@ Page({
                   key:"openid",
                   data: res.data.info
                 })
-              //在这里写一条跳转页面到创建队伍那里
+                wx.switchTab({
+                  url:'/pages/list/write/write'
+                })
               }else{
                 //弹出框框   您未授权，无法组队！
+                wx.showModal({
+                  title:'警告',
+                  content:'您未授权，无法组队',
+                  showCancel:false,
+                })
                  console.log('您未授权成功,无法组队！')
               }
             }

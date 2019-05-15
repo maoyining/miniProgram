@@ -9,6 +9,7 @@ Page({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     index:0,
+    competeName:['全国大学生数学建模竞赛','浙江省新苗人才计划大赛','中国"互联网+"创新创业大赛','ACM程序设计大赛']
     
   
   },
@@ -30,6 +31,12 @@ Page({
     })
 
   },
+  bindPickerChange(e){
+      console.log('picker',e.detail.value.cname)
+      this.setData({
+        index:e.detail.value
+      })
+  },
 
   /**
  * CreateTeam --提交队伍表单，注意每个数据均不能为空
@@ -42,6 +49,33 @@ Page({
      //然后memberNow>memberTotal也会跳出弹出框提示错误
      //把比赛名称那里修改成下拉选择框,四种比赛类型的名称为：
      //全国大学生数学建模竞赛、浙江省新苗人才计划大赛、中国"互联网+"创新创业大赛、ACM程序设计大赛
+
+     for (var element in e.detail.value){
+       if (!e.detail.value[element]){
+          e.detail.value[element].css("border","1px solid red");
+          flag=1;
+       }
+       else if(e.detail.value.memberNow>=memberTotal){
+        e.detail.value[element].css("border","1px solid red");
+        flag=2;
+        wx.showToast({
+          title:'现有人数比期望人数少',
+          icon:'false',
+        })
+       }
+       flag=0;
+          
+     }
+     if (flag==1){
+       wx.showToast({
+         title:'表单未填写完整',
+         icon:'false',
+
+       })
+     }
+     else if(flag==0 ){
+
+     
      wx.request({
       url: app.globalData.host+'/team',
       method: 'POST',
@@ -75,7 +109,7 @@ Page({
          } 
       },
     })
-
+  }
 
   },
 
