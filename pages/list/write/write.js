@@ -37,9 +37,11 @@ Page({
   CreateTeam: function (e) {
      var that = this;
      console.log(this.data.openid);
-     //如果e.detail.value.tname,或者还有其他成员为空，
+     //如果e.detail.value.tname,或者还有其他成员为空,
      //则不会进行wx.request,并且跳出弹出框输入内容不为空
-     //
+     //然后memberNow>memberTotal也会跳出弹出框提示错误
+     //把比赛名称那里修改成下拉选择框,四种比赛类型的名称为：
+     //全国大学生数学建模竞赛、浙江省新苗人才计划大赛、中国"互联网+"创新创业大赛、ACM程序设计大赛
      wx.request({
       url: app.globalData.host+'/team',
       method: 'POST',
