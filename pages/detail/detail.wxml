@@ -7,9 +7,12 @@
 <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
  
 <view>
-        
-        
-        <view class="buttom_tar">
+<view>
+<button open-type="getUserInfo" bindgetuserinfo="Login">
+      我要组队
+</button>
+</view>
+        <!-- <view class="buttom_tar">
 
                 <button bindtap="click1"> 
                 <image class="little_icon"  src="{{imgUrls1}}"/>
@@ -23,7 +26,7 @@
                 <image class="little_icon" src="{{imgUrls3}}"/>
                 </button>
 
-        </view>
+        </view> -->
 
         
         

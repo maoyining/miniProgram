@@ -19,6 +19,15 @@ Page({
     })
   },
   onLoad: function () {
+    var that=this
+    wx.getStorage({//从本地缓存中取出openid
+      key:"openid",
+      success:function(res){
+        that.setData({
+          openid:res.data.openid
+        });
+      },
+    })
 
   },
 
@@ -27,22 +36,13 @@ Page({
  */
   CreateTeam: function (e) {
      var that = this;
-    // console.log(this.data.match);
-    // var str='';
-    // console.log("提交时需求默认值：" + that.data.str);
-    // var i;
-    // for (i =0; i < that.data.need.length-1; i++) {
-    //   console.log(that.data.need[i]);
-    //   str =str + that.data.need[i]+' ';
-    // }
-    // str=str+that.data.need[i];
-    console.log(app.globalData.openid)
-    wx.request({
+     console.log(this.data.openid);
+     wx.request({
       url: app.globalData.host+'/team',
       method: 'POST',
       data:
       {
-          "openid":app.globalData.openid,
+          "openid":that.data.openid,
           "tname":e.detail.value.tname,
           "memberNow":parseInt(e.detail.value.memberNow),
           "memberTotal":parseInt(e.detail.value.memberTotal),

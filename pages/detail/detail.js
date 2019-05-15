@@ -10,75 +10,126 @@ Page({
    */
   data: {
     imgUrls1: '/static/images/collection1.png',
-    imgUrls2:'/static/images/like1.png',
-    imgUrls3: '/static/images/share1.png',
-    flag1:true,
-    flag2:true,
-    
-},
-click1:function(){
-  if(this.data.flag1==true){
-    this.setData({
-        imgUrls1: '/static/images/collection2.png',
-        flag1:false,
-    })
-    
- }else{
-   this.setData({
-    imgUrls1: '/static/images/collection1.png',
-    flag1:true
-   })
-   
- }
-},
-
-click2:function(){
-  if(this.data.flag2==true){
-    this.setData({
-        imgUrls2: '/static/images/like2.png',
-        flag2:false,
-    })
-    
- }else{
-   this.setData({
     imgUrls2: '/static/images/like1.png',
-    flag2:true
-   })
-   
- }
-},
+    imgUrls3: '/static/images/share1.png',
+    flag1: true,
+    flag2: true,
 
+
+  },
+  click1: function () {
+    if (this.data.flag1 == true) {
+      this.setData({
+        imgUrls1: '/static/images/collection2.png',
+        flag1: false,
+      })
+
+    } else {
+      this.setData({
+        imgUrls1: '/static/images/collection1.png',
+        flag1: true
+      })
+
+    }
+  },
+
+  click2: function () {
+    if (this.data.flag2 == true) {
+      this.setData({
+        imgUrls2: '/static/images/like2.png',
+        flag2: false,
+
+      })
+
+    } else {
+      this.setData({
+        imgUrls2: '/static/images/like1.png',
+        flag2: true
+      })
+
+    }
+  },
+  Login: function (e) {
+      console.log(e)
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+      if(this.data.openid){
+      //直接跳转页面到发帖组队页面
+      console.log("跳转")
+      }else{
+      wx.login({
+        success: function (res) {
+          let userInfo = app.globalData.userInfo
+          wx.request({
+            url: app.globalData.host + '/users',
+            data: {
+              code: res.code,
+              appID: 'wxfd0ba5ed8c9d10b1',
+              secret: '93331043ea682f88615207608d21530c',
+              nickName: userInfo.nickName,
+              avatarUrl: userInfo.avatarUrl,
+            },
+            method: 'POST',
+            success: function (res) {
+              console.log(res)
+              if(res.statusCode==200){
+
+                wx.setStorage({
+                  key:"openid",
+                  data: res.data.info
+                })
+              //在这里写一条跳转页面到创建队伍那里
+              }else{
+                //弹出框框   您未授权，无法组队！
+                 console.log('您未授权成功,无法组队！')
+              }
+            }
+          })
+        }
+      })
+    }
+    
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      //这个options会收集你传过来的参数
-      let index=options.index
-      index=parseInt(index)
-      index=index+1
-      console.log(index)
-     // let idArr=['nfieajlfkvos','qwertyuiasdfghjk','3','6']
+    //这个options会收集你传过来的参数
 
-      var that=this
-      wx.request({
-        url:app.globalData.host+"/article/content",
-        data:{
-          // page:2,
-          //rpp:20
-          pid:index
-        },
-        method:'POST',
-       
-        success:function(res){
-          let article=res.data
-          console.log(article)
-          WxParse.wxParse('article', 'html', article, that,5)
-         // that.setData({detailObj: res.data.data });
-        }
-  
-      })
-      
+    wx.getStorage({//从本地缓存中取出openid
+      key:"openid",
+      success:function(res){
+        that.setData({
+          openid:res.data.openid
+        });
+        console.log(res)
+      },
+    })
+
+    let index = options.index
+    index = parseInt(index)
+    index = index + 1
+    var that = this
+
+    wx.request({
+      url: app.globalData.host + "/article/content",
+      data: {
+        pid: index
+      },
+      method: 'POST',
+
+      success: function (res) {
+        let article = res.data
+        console.log(article)
+        WxParse.wxParse('article', 'html', article, that, 5)
+      }
+
+    })
+
   },
 
   /**

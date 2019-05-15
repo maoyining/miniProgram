@@ -14,9 +14,4 @@
     <text class="user-motto">{{motto}}</text>
     <text class="user-motto">{{userName}}</text>
   </view>
-
-      <button bindtap="try">
-      测试
-    </button>
-    {{trydata}}
 </view>

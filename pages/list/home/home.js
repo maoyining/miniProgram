@@ -4,11 +4,11 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userName:'毛忆宁',
+    
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    
     imgUrls: [
       '/static/images/bg_1.jpg',
       '/static/images/bg_2.jpg',
