@@ -52,28 +52,24 @@ Page({
 
      for (var element in e.detail.value){
        if (!e.detail.value[element]){
-          e.detail.value[element].css("border","1px solid red");
-          flag=1;
-       }
-       else if(e.detail.value.memberNow>=memberTotal){
-        e.detail.value[element].css("border","1px solid red");
-        flag=2;
+        wx.showToast({
+          title:'表单未填写完整',
+          icon:'false',
+ 
+        })
+        flag=1;       }
+       else if(e.detail.value.memberNow>=e.detail.value.memberTotal){
+       
         wx.showToast({
           title:'现有人数比期望人数少',
           icon:'false',
         })
        }
-       flag=0;
+       
           
      }
-     if (flag==1){
-       wx.showToast({
-         title:'表单未填写完整',
-         icon:'false',
-
-       })
-     }
-     else if(flag==0 ){
+    
+      if(!flag){
 
      
      wx.request({
