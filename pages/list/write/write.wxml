@@ -2,7 +2,7 @@
   <view class="cu-form-group margin-top">
     <view class='title'>比赛名称</view>
     <input class='radius' name='cname' value='{{form_info}}'></input>
-    <picker bindchange="bindPickerChange" value='{{index}}' name='cname' range="{{competeName}}">
+    <picker bindchange="bindPickerChange" value='{{competeName[index]}}' name='cname' range="{{competeName}}">
     <view class="picker">{{competeName[index]}}</view>
     </picker>
   </view>
