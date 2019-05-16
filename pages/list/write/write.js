@@ -9,7 +9,9 @@ Page({
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
     index:0,
-    competeName:['全国大学生数学建模竞赛','浙江省新苗人才计划大赛','中国"互联网+"创新创业大赛','ACM程序设计大赛']
+    competeName:['选择','全国大学生数学建模竞赛','浙江省新苗人才计划大赛','中国"互联网+"创新创业大赛','ACM程序设计大赛'],
+    flag:0,
+    cname:''
     
   
   },
@@ -32,10 +34,15 @@ Page({
 
   },
   bindPickerChange(e){
-      console.log('picker',e.detail.value.cname)
+     // console.log('picker',e)
+      var index=e.detail.value;
       this.setData({
         index:e.detail.value
       })
+    this.setData(
+      { cname: this.data.competeName[index] }
+    )
+    console.log(this.data.cname);
   },
 
   /**
@@ -54,25 +61,28 @@ Page({
        if (!e.detail.value[element]){
         wx.showToast({
           title:'表单未填写完整',
-          icon:'false',
+          //icon:'warn'
+          image:'/static/images/警告.png'
  
         })
-        flag=1;       }
+        this.flag=1;       }
        else if(e.detail.value.memberNow>=e.detail.value.memberTotal){
        
         wx.showToast({
           title:'现有人数比期望人数少',
-          icon:'false',
+          image:'/static/images/警告.png',
+          iconsize:'16px'
         })
+        this.flag=1;
        }
        
           
      }
     
-      if(!flag){
+      if(!this.flag){
 
      
-     wx.request({
+    /* wx.request({
       url: app.globalData.host+'/team',
       method: 'POST',
       data:
@@ -84,7 +94,7 @@ Page({
           "contact":e.detail.value.contact,
           "desc":e.detail.value.desc,
           "need":e.detail.value.need,
-          "cname":e.detail.value.cname
+          "cname":that.data.cname
       },
       success(res) {
         // var teamID = res.data.data.teamID;
@@ -105,6 +115,8 @@ Page({
          } 
       },
     })
+    */
+    console.log('success');
   }
 
   },
