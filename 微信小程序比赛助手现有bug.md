@@ -49,4 +49,4 @@ data: {
       },
 method: 'POST',
 ```
-
+所有的openid现在都从缓存中取出来
