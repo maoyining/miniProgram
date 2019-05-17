@@ -3,6 +3,7 @@
    margin-bottom:100rpx;
    margin-left:50rpx;
    margin-right:50rpx;
+   
 }
 .img_begin{
    width:100%;
@@ -42,7 +43,5 @@ button::after {
    border-radius:0;
     
  }
-
-
 
 

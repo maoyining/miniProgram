@@ -1,17 +1,12 @@
-<!--pages/detail/detail.wxml-->
-<view class="content" >
-<!-- <image class="img_begin" src="/static/images/begin.jpg"/> -->
-
-
-
- <wemark md="{{md}}" link highlight type="wemark"></wemark>
-<view>
-<view>
-<button bindtap="Login">
-      我要组队
-</button>
-</view>
-        <!-- <view class="buttom_tar">
+<!-- pages/detail/detail.wxml -->
+<view class="content">
+        <!-- <image class="img_begin" src="/static/images/begin.jpg"/> -->
+        <wemark md="{{md}}" link highlight type="wemark"></wemark>
+        <view>
+                <view>
+                        <button bindtap="Login">我要组队</button>
+                </view>
+                <!-- <view class="buttom_tar">
 
                 <button bindtap="click1"> 
                 <image class="little_icon"  src="{{imgUrls1}}"/>
@@ -26,8 +21,5 @@
                 </button>
 
         </view> -->
-
-        
-        
-</view>
+        </view>
 </view>
