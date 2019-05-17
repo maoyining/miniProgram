@@ -1,7 +1,6 @@
 // pages/detail/detail.js
 const app = getApp()
 
-var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
 
@@ -51,57 +50,9 @@ Page({
   },
   Login: function (e) {
       console.log(e)
-      app.globalData.userInfo = e.detail.userInfo
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true
-      })
-      if(this.data.openid){
-      //直接跳转页面到发帖组队页面
       wx.switchTab({
         url:'/pages/list/write/write'
       })
-      console.log("跳转");
-      }else{
-      wx.login({
-        success: function (res) {
-          let userInfo = app.globalData.userInfo
-          wx.request({
-            url: app.globalData.host + '/users',
-            data: {
-              code: res.code,
-              appID: 'wxfd0ba5ed8c9d10b1',
-              secret: '93331043ea682f88615207608d21530c',
-              nickName: userInfo.nickName,
-              avatarUrl: userInfo.avatarUrl,
-            },
-            method: 'POST',
-            success: function (res) {
-              console.log(res)
-              if(res.statusCode==200){
-
-                wx.setStorage({
-                  key:"openid",
-                  data: res.data.info
-                })
-                wx.switchTab({
-                  url:'/pages/list/write/write'
-                })
-              }else{
-                //弹出框框   您未授权，无法组队！
-                wx.showModal({
-                  title:'警告',
-                  content:'您未授权，无法组队',
-                  showCancel:false,
-                })
-                 console.log('您未授权成功,无法组队！')
-              }
-            }
-          })
-        }
-      })
-    }
-    
   },
 
   /**
@@ -110,15 +61,7 @@ Page({
   onLoad: function (options) {
     //这个options会收集你传过来的参数
 
-    wx.getStorage({//从本地缓存中取出openid
-      key:"openid",
-      success:function(res){
-        that.setData({
-          openid:res.data.openid
-        });
-        console.log(res)
-      },
-    })
+    
 
     let index = options.index
     index = parseInt(index)
@@ -135,7 +78,9 @@ Page({
       success: function (res) {
         let article = res.data
         console.log(article)
-        WxParse.wxParse('article', 'html', article, that, 5)
+        that.setData({
+          md:article
+        })
       }
 
     })

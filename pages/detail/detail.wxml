@@ -3,12 +3,11 @@
 <!-- <image class="img_begin" src="/static/images/begin.jpg"/> -->
 
 
-<import src="../../wxParse/wxParse.wxml"/>
-<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
- 
+
+ <wemark md="{{md}}" link highlight type="wemark"></wemark>
 <view>
 <view>
-<button open-type="getUserInfo" bindgetuserinfo="Login">
+<button bindtap="Login">
       我要组队
 </button>
 </view>

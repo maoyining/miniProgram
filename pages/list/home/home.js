@@ -23,19 +23,19 @@ Page({
     information:[
       { 
           
-        title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
+       // title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
         url:'/static/images/xm_1.jpg'},
       {
         
-        title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
+        //title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
         url:'/static/images/xm_1.jpg'},
       {
         
-        title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
+       // title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
         url:'/static/images/xm_1.jpg'},
       {
         
-        title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
+      //  title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
         url:'/static/images/xm_1.jpg'},
       
       
@@ -76,6 +76,8 @@ Page({
         }
       })
     }
+
+    
     //请求文章列表数据
     wx.request({
       url:app.globalData.host+"/articles",
@@ -89,7 +91,28 @@ Page({
         that.setData({information: res.data.info });
       }
     })
-    
+    wx.login({
+      success: function (res) {
+        //let userInfo = app.globalData.userInfo
+        wx.request({
+          url: app.globalData.host + '/openid',
+          data: {
+            code: res.code,
+            appID: 'wxfd0ba5ed8c9d10b1',
+            secret: '93331043ea682f88615207608d21530c',
+          },
+          method: 'POST',
+          success: function (res) {
+            console.log(res)
+            if(res.statusCode==200){
+              app.globalData.openid=res.data.info
+            }else{
+               console.log('您未授权成功,无法组队！')
+            }
+          }
+        })
+      }
+    })
 
   } ,
   

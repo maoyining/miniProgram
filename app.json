@@ -35,7 +35,7 @@
       },
       {
         "pagePath": "pages/list/write/write",
-        "text": "发帖",
+        "text": "组队",
         "iconPath": "static/images/put.png",
         "selectedIconPath": "static/images/put.png"
       },

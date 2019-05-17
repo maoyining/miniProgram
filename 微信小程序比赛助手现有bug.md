@@ -50,3 +50,58 @@ data: {
 method: 'POST',
 ```
 所有的openid现在都从缓存中取出来
+
+
+<!-- console.log(e)
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+      if(this.data.openid){
+      //直接跳转页面到发帖组队页面
+      wx.switchTab({
+        url:'/pages/list/write/write'
+      })
+      console.log("跳转");
+      }else{
+      wx.login({
+        success: function (res) {
+          let userInfo = app.globalData.userInfo
+          wx.request({
+            url: app.globalData.host + '/users',
+            data: {
+              code: res.code,
+              appID: 'wxfd0ba5ed8c9d10b1',
+              secret: '93331043ea682f88615207608d21530c',
+              nickName: userInfo.nickName,
+              avatarUrl: userInfo.avatarUrl,
+            },
+            method: 'POST',
+            success: function (res) {
+              console.log(res)
+              if(res.statusCode==200){
+
+                wx.setStorage({
+                  key:"openid",
+                  data: res.data.info
+                })
+                wx.switchTab({
+                  url:'/pages/list/write/write'
+                })
+              }else{
+                //弹出框框   您未授权，无法组队！
+                wx.showModal({
+                  title:'警告',
+                  content:'您未授权，无法组队',
+                  showCancel:false,
+                })
+                 console.log('您未授权成功,无法组队！')
+              }
+            }
+          })
+        }
+      })
+    }
+    
+  } -->

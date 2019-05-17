@@ -4,6 +4,7 @@
     <view class='action'>
       <text class='icon-title text-orange '></text> 我的
     </view> 
+    <button>清除授权数据</button>
   </view>
 
 <!--菜单列表-->

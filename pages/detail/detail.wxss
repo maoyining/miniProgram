@@ -42,7 +42,7 @@ button::after {
    border-radius:0;
     
  }
-@import "/wxParse/wxParse.wxss"
+
 
 
 
