@@ -13,19 +13,19 @@ Page({
       { 
           
         title:'#小程序设计大赛小程序组',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t1.jpg'},
       {
         
         title:'#小程序设计大赛小游戏组',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t2.jpg'},
       {
         
         title:'#程序设计大赛',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t3.jpg'},
       {
         
         title:'#巴拉巴拉巴拉',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t4.jpg'},
       
       
     ]

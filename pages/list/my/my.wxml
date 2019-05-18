@@ -18,11 +18,11 @@
       </button>
     </view>
   </view>
-  <view class="divLine"></view>
+  
   <!-- 首先是队伍显示界面，点击之后隐藏 -->
   <view class="hide{{showView?'show':''}}">
     <block wx:for="{{information}}" wx:key="{{index}}">
-      <view class="grey" data-index='{{index}}' catchtap="getTeam">
+      <view class="divLine" data-index='{{index}}' catchtap="getTeam">
         <template is="teamItem" data="{{...item}}" />
       </view>
     </block>
@@ -60,4 +60,15 @@
       <text class='text-grey'>管理队伍</text>
     </button>
   </view>
+  <form class="weui-search-bar__form">
+        <div class="weui-search-bar__box">
+            <i class="weui-icon-search"></i>
+            <input type="search" class="weui-search-bar__input" id="search_input" placeholder="搜索" />
+            <a href="javascript:" class="weui-icon-clear" id="search_clear"></a>
+        </div>
+        <label for="search_input" class="weui-search-bar__label" id="search_text">
+            <i class="weui-icon-search"></i>
+            <span>搜索</span>
+        </label>
+    </form>
 </view>

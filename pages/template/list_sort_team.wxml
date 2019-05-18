@@ -2,7 +2,7 @@
 <template name="teamItem">
 <view class="cu-form-group">
 
-    <view class="item1">
+    <view class='icon-btn text-olive'>
         <view class="cmp_font">
            {{cname}}
         </view>
@@ -13,6 +13,6 @@
     </view>
 </view>
 
-<view class="divLine"></view> 
+
 
 </template>

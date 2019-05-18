@@ -28,8 +28,8 @@
         "selectedIconPath": "static/images/index.png"
       },
       {
-        "pagePath": "pages/list/sort/sort",
-        "text": "分类",
+        "pagePath": "pages/teamList/teamList",
+        "text": "队伍",
         "iconPath": "static/images/category.png",
         "selectedIconPath": "static/images/category.png"
       },

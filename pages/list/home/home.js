@@ -23,20 +23,20 @@ Page({
     information:[
       { 
           
-       // title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
-        url:'/static/images/xm_1.jpg'},
+       //s title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
+        url:'/static/images/t1.jpg'},
       {
         
         //title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t2.jpg'},
       {
         
        // title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t3.jpg'},
       {
         
       //  title:'2019年浙江省大学生科技创新活动计划暨新苗人才计划',
-        url:'/static/images/xm_1.jpg'},
+        url:'/static/images/t4.jpg'},
       
       
     ]
