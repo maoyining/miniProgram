@@ -1,9 +1,18 @@
 <!--pages/list/my/admin/admin.wxml-->
-
+<import src='/pages/template/list_sort_team.wxml' />
 <view>
- <block wx:for="{{information}}" wx:key="{{item.id}}">
+ <!-- <block wx:for="{{information}}" wx:key="{{item.id}}">
               <button bindtap='check' data-index='{{index}}'>
                 {{item.tname}}
               </button>
-          </block>
+          </block> -->
+需要管理的队伍列表
+
+  <block wx:for="{{information}}" wx:key="{{index}}">
+      <view class="grey" data-index='{{index}}' catchtap="check">
+        <template is="teamItem" data="{{...item}}" />
+      </view>
+      <view class="divLine"></view>
+  </block>
+  
   </view>

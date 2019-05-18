@@ -107,19 +107,18 @@ getCheck(){
     this.setData({ openid:app.globalData.openid  });
     var that = this;
     wx.request({
-      url: app.globalData.host + '/myteam',
+      url: app.globalData.host + '/team/id',
       method: 'POST',
       data: {
-      //  openid: app.globalData.openid,
         teamID: id
       },
       success: function (res) {
         console.log(res.data.info[0]);
         that.setData({ TeamInformation: res.data.info[0] });
-        // that.setData({need:res.data.info.need});
+   
       }
     })
-    //console.log(TeamInformation)
+ 
   },
  
 

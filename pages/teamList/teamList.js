@@ -7,30 +7,7 @@ Page({
    */
   data: {
     information:[
-      { 
-        cname:'小程序大赛',
-        tname:'菜鸡一队',
-        need:'前端  后台',
-        url:'/static/images/xm_1.jpg'
-      },
-      {
-        cname:'小程序大赛',
-        tname:'菜鸡二队',
-        need:'算法设计 前端',
-        url:'/static/images/xm_1.jpg'
-      },
-      {
-        cname:'小程序大赛',
-        tname:'菜鸡三队',
-        need:'人工智能',
-        url:'/static/images/xm_1.jpg'
-      },
-      {
-        cname:'小程序大赛',
-        tname:'菜鸡四队',
-        need:'后台',
-        url:'/static/images/xm_1.jpg'
-      },
+      
       
     ]
   },
@@ -42,7 +19,7 @@ Page({
     var that=this
     
     wx.request({
-      url:app.globalData.host+'/teams',
+      url:app.globalData.host+'/teams/1',
       method:'Get',
       success:function(res){
         //let article=res.data.data.content

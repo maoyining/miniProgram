@@ -1,6 +1,7 @@
 <!--pages/teamList/teamList.wxml-->
 <import src='/pages/template/list_sort_team.wxml'/>
 <view>
+队伍列表
     <block wx:for="{{information}}" wx:key="{{index}}">
         <view class="grey" data-index='{{index}}'catchtap="toTeamDetail">
             <template is="teamItem" data="{{...item}}"/>

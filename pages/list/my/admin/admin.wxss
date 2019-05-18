@@ -1,1 +1,2 @@
 /* pages/list/my/admin/admin.wxss */
+@import '/pages/template/list_sort_team.wxss';

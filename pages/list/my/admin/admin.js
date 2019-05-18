@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.globalData.host + '/unteams',
+      url: app.globalData.host + '/teams/0',
       method: 'GET',
 
       success: function (res) {

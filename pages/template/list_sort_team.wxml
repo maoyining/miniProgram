@@ -1,21 +1,18 @@
 <!--pages/template/list_sort_team.wxml-->
 <template name="teamItem">
-<view class="container1">
+<view class="cu-form-group">
 
     <view class="item1">
         <view class="cmp_font">
-            {{cname}}
+           {{cname}}
         </view>
         <view class="cmp_font">
-            {{tname}}
+         {{tname}}
         </view>
+       <!-- 在这个模板里把队伍创建的日期也给加上，后端传回来的日期精确到时分秒，需要前端把队伍的日期用字符串截取的方式处理一下再上传 -->
     </view>
-
-    <view class="item2">
-        <image class="cmp_image" src="{{url}}"/>
-    </view>
-
 </view>
-<!-- <view class="divLine"></view> -->
+
+<view class="divLine"></view> 
 
 </template>

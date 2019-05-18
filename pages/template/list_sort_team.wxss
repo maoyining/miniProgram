@@ -26,13 +26,6 @@
    
 }
 
-.cmp_image{
-    height:80%;
-    width:100%;
-    margin-top:15rpx;
-    margin-bottom:10rpx;
-    border-radius:15rpx;
-}
 
 .cmp_font{
     font-size:35rpx;
