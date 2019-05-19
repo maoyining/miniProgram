@@ -1,7 +1,21 @@
 <!--pages/teamList/teamList.wxml-->
 <import src='/pages/template/list_sort_team.wxml'/>
-<view>
-队伍列表
+    
+<view class="hide{{showView1?'show':''}}">
+    <form bindsubmit='postKey'>
+      <view class="cu-form-group margin-top">
+        <view class='title'>查询条件</view>
+        <input class='radius' name='key'></input>
+      </view>
+      <button class="weui-btn" type="primary" form-type='submit'>搜索</button>
+    </form>
+     <block wx:for="{{Information1}}" wx:key="{{index}}">
+        <view class="divLine"data-index='{{index}}'catchtap="toTeamDetail">
+            <template is="teamItem" data="{{...item}}"/>
+        </view>
+    </block>
+  </view>
+ <view>
     <block wx:for="{{information}}" wx:key="{{index}}">
         <view class="divLine"data-index='{{index}}'catchtap="toTeamDetail">
             <template is="teamItem" data="{{...item}}"/>

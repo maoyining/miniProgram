@@ -4,11 +4,12 @@
 
     <view class='icon-btn text-olive'>
         <view class="cmp_font">
-           {{cname}}
+          比赛:{{cname}}
         </view>
         <view class="cmp_font">
-         {{tname}}
+         队名:{{tname}} {{state}}
         </view>
+        
        <!-- 在这个模板里把队伍创建的日期也给加上，后端传回来的日期精确到时分秒，需要前端把队伍的日期用字符串截取的方式处理一下再上传 -->
     </view>
 </view>

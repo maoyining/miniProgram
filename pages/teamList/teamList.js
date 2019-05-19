@@ -6,11 +6,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    information:[
-      
-      
-    ]
+    information:[],
+   information1:[],
+   
   },
+  
+
+postKey: function (e) {
+  console.log(e)
+  this.setData({ key: e.detail.value.key })
+
+  var that = this;
+  console.log(this.data.key);
+  wx.request({
+    url: app.globalData.host+"/search",
+    method: 'POST',
+    data: {
+      keyword: this.data.key
+    },
+    success: function (res) {
+      console.log(res);
+      if (res.statusCode==200){
+        console.log(res.data.info) 
+        that.setData({ Information1: res.data.info });
+        that.setData({ information: [] });
+        
+      }
+      else{
+        wx.showToast({
+          title: '没有查询到队伍',
+          icon: 'fail',
+          duration: 2000
+        })
+      }
+
+    }
+  })
+},
 
   /**
    * 生命周期函数--监听页面加载
@@ -26,6 +58,7 @@ Page({
         console.log(res.data.info)
         //WxParse.wxParse('article', 'html', article, that,5)
         that.setData({information: res.data.info });
+        
       }
 
     })

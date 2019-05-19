@@ -25,27 +25,12 @@
       <view class="divLine" data-index='{{index}}' catchtap="getTeam">
         <template is="teamItem" data="{{...item}}" />
       </view>
+      
     </block>
   </view>
   <!-- 点击之后输入条件，输入结束之后先跳转到结果界面，之后返回到本页面 -->
-  <view class="cu-item {{menuArrow?'arrow':''}}">
-    <button class='cu-btn content' bindtap='onChangeShowStateTeam'>
-      <text class='icon-btn text-olive'></text>
-      <text class='text-grey'>请输入团队名称或比赛名称查询队伍</text>
-    </button>
-  </view>
-  <view class="hide{{showView1?'show':''}}">
-    <form bindsubmit='postKey'>
-      <view class="cu-form-group margin-top">
-        <view class='title'>查询条件</view>
-        <input class='radius' name='key'></input>
-      </view>
-      <button class="weui-btn" type="primary" form-type='submit'>提交</button>
-    </form>
-    <block wx:for="{{Information1}}" wx:key="{{item.id}}">
-      <button bindtap='getTeam1' data-index='{{index}}'>{{item.tname}}</button>
-    </block>
-  </view>
+  
+  
   <!-- 在使用过程中，有问题请联系我们 -->
   <view class="cu-item {{menuArrow?'arrow':''}}">
     <button class='cu-btn content'>

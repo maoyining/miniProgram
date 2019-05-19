@@ -12,7 +12,13 @@ Page({
   
     gridCol: 3,
     skin: false,
-    information:''
+    // information:[{
+    //   tname:'',
+    //   cname:'',
+    //   state:''
+    // }
+    // ]
+  
 
   },
 
@@ -73,9 +79,21 @@ Page({
      
       success: function (res) {
         console.log(res);
-        if (res.statusCode == 200)
+        if (res.statusCode == 200){
           that.setData({ information: res.data.info });
-        else {
+          let i;
+        for(i=0;i<res.data.info.length;i++){
+          let str='information['+i+'].state'
+          if (res.data.info[i].status==0){
+            that.setData({[str]:'审核状态：审核中'})
+          }else if(res.data.info[i].status==1){
+            that.setData({[str]:'审核状态：审核通过'})
+          }else{
+            that.setData({[str]:'审核状态：审核未通过'})
+          }
+
+        }
+        }else {
           wx.showToast({
             title: '您还没有团队',
           })
@@ -108,41 +126,9 @@ Page({
     that.setData({ showView1: (!that.data.showView1) })
 
   },
+  
   /**
-  * postKey:提交查询条件，储存为key
-  */
-  postKey: function (e) {
-    console.log(e.detail.value.key)
-    this.setData({ key: e.detail.value.key })
-
-    var that = this;
-    console.log(this.data.key);
-    wx.request({
-      url: app.globalData.host+"/search",
-      method: 'POST',
-      data: {
-        keyword: this.data.key
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.data.info[0]){
-          console.log(res.data.info) 
-          that.setData({ Information1: res.data.info });
-        }
-        else{
-          wx.showToast({
-            title: '没有查询到队伍',
-            icon: 'fail',
-            duration: 2000
-          })
-        }
-
-      }
-    })
-  },
-
-  /**
-  * getTeam1获取我创建的团队信息（单条详情）
+  * 
   * 需要传递参数teamID
   */
   getTeam1: function (e) {
