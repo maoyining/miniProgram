@@ -12,7 +12,7 @@
   border-radius: 50%;
 }
 .left{
-  margin-left: 400rpx;
+  margin-left: 360rpx;
 }
 .userinfo-nickname {
   color: #aaa;
