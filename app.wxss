@@ -2,7 +2,7 @@
 @import 'style/weui.wxss';
 @import 'style/colorui.wxss';
 @import 'style/icon.wxss';
-
+@import 'style/iconfont.wxss';
 .container {
   height: 100%;
   display: flex;
