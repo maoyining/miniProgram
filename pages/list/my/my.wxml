@@ -15,8 +15,10 @@
       <button class="cu-btn content" bindtap="onChangeShowState">
         <text class='icon-btn text-olive'></text>
         <text class='text-grey'>我创建的队伍</text>
-        <icon type="search" size="23" color="" /> 
-      </button>
+        <view class="left">
+        <text class="iconfont icon-xiala" style='font-size:70rpx;color:grey;'></text>
+        </view>
+     </button>
     </view>
   </view>
   

@@ -1,10 +1,11 @@
-@font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1558249557660'); /* IE9 */
-  src: url('iconfont.eot?t=1558249557660#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAKMAAsAAAAABkAAAAJCAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcApMYAE2AiQDCAsGAAQgBYRtBy8bhQXInpo8CbDAguqwBUtAAI54eH5//6197/miGhiHaiAi0eKUPKE4T373v9bmzEOdsyaaLpkmrK/MX/HZwV6nZUIhRAgRQiMBmf9T8+vAJ+6d/gn0QUY9oBz3orEmTeoC6uJACmhvjCIroYwbxi5wCY8JlOs2kNk+3B6gLLFWBeKSY2lQzoUkiWVLheKag0m8V6Q0e5GFd+H345/5KCVTlLPq9pzZm7D6yc7LFTjhE8IEdLwIOSaBRByoTe2SE4zLKU/l9YN9VQc/FfadYq82wf46q7ISdEL5PSnclQJkcFsj1QNtoyYQ9Q+/vmw8dca76POzptNfXrWc/fZ8cd841dFgf3goSHzXHVpa5MoXF4fqYMX6Wb4jOyeD4GjLl3Fr+X9pRQI/6jsYWpN+HlC6D3fwLxQ9u5KushxZUhW1/Zn6czSUK0cB9tX7G2tuOnEulGoa4SnRlSJXapBM7CSKVFhEsVJrKDfheLxCA5YTqQzjPgBCrU9kqn1HrtYPmdhfFGn2j2K1kaPcoWi4sMJwnK9uMWlCJur30TkZhcpxSTWqviPr2dc4qwr5J+LUieJ0eraYPVJIPMeW9I41k1sK1Y0owAN4jnw/wvhG5JIhI/uWxMvxzJm6N42MqwFUbWFEI4gJ6d4hhyESUv5gUS19/g6xPPNpuKWjJvuEsJQzPpoamfQgj/qwV8e9vJJ6YZkRQkEKiwTQAcwjPl8ExfXzXMQgRuwRidjS2O6l+upH6xuDrzsE5SxLFvaMXNE9R/M1AA==') format('woff2'),
-  url('iconfont.woff?t=1558249557660') format('woff'),
-  url('iconfont.ttf?t=1558249557660') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('iconfont.svg?t=1558249557660#iconfont') format('svg'); /* iOS 4.1- */
+@font-face {
+  font-family: 'iconfont';  /* project id 1199356 */
+  src: url('//at.alicdn.com/t/font_1199356_f68b3003ype.eot');
+  src: url('//at.alicdn.com/t/font_1199356_f68b3003ype.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1199356_f68b3003ype.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1199356_f68b3003ype.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1199356_f68b3003ype.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1199356_f68b3003ype.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -13,6 +14,7 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 .icon-xiala:before {
