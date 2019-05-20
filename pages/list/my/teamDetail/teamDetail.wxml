@@ -16,7 +16,6 @@
     <view class='title'>队伍简介</view>
     <div class='radius' name='tag'>{{TeamInformation.need}}</div>
   </view>
-
   <view class="cu-form-group">
     <view class='title'>队伍目前人数</view>
     <div class='radius' type='number' name='memberNow'>{{TeamInformation.memberNow}}</div>
@@ -29,11 +28,12 @@
     <view class='title'>联系人的微信</view>
     <div class='radius' name='contact'>{{TeamInformation.contact}}</div>
   </view>
-  
   <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}">
-  <button class="weui-btn" type="primary" bindtap="getCheck" >通过</button>
-   <button class="weui-btn" type="primary" bindtap="getUncheck" >不通过</button>
- </view>
+    <button class="weui-btn" type="primary" bindtap="getCheck">通过</button>
+    <button class="weui-btn" type="primary" bindtap="getUncheck">不通过</button>
+  </view>
   <!-- <button class="weui-btn" type="primary" bindtap="ChangeTeam">修改信息</button> -->
-  <button class="weui-btn" type="primary" bindtap='DeleteTeam'>删除团队</button>
+  <view wx:if="{{openid==TeamInformation.userID}}" class="top">
+    <button class="weui-btn" type="primary" bindtap='DeleteTeam'>删除团队</button>
+  </view>
 </form>

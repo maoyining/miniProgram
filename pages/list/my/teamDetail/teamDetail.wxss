@@ -1,1 +1,4 @@
 /* pages/list/my/teamDetail/teamDetail.wxss */
+.top{
+    margin-top: 40rpx;
+}

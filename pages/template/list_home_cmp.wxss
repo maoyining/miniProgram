@@ -35,7 +35,7 @@
 }
 
 .cmp_font{
-    font-size:35rpx;
+    font-size:30rpx;
     font-family:'Courier New';
     font-weight:550;
     margin-top: 30rpx;
