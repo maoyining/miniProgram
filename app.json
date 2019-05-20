@@ -1,17 +1,16 @@
 {
   "pages": [
-    
     "pages/list/home/home",
     "pages/list/sort/sort",
     "pages/list/write/write",
     "pages/list/my/my",
     "pages/logs/logs",
-    
     "pages/detail/detail",
     "pages/list/my/teamDetail/teamDetail",
     "pages/list/my/changeTeam/changeTeam",
     "pages/teamList/teamList",
-    "pages/list/my/admin/admin"
+    "pages/list/my/admin/admin",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -46,5 +45,6 @@
         "selectedIconPath": "static/images/my.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
