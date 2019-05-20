@@ -1,16 +1,10 @@
 <!-- index.wxml -->
 <!-- 用于用户登录以及显示用户昵称 -->
 <import src='/pages/template/list_sort_team.wxml' />
-<!--
-<view class="cu-bar bg-white solid-bottom margin-top">
-  <view class='action'>
-    <text class='icon-title text-orange '></text>
-    我的
-  </view>
-</view>-->
+
 <view class='UCenter-bg'>
  <!--用户头像-->
-  <image src='' class='png' ></image>
+  
   <open-data type="userAvatarUrl" ></open-data>
 <!--用户昵称-->
   <view class='text-xl'>
@@ -29,12 +23,6 @@
       <button class="cu-btn content" bindtap="onChangeShowState">
         <text class='icon-btn text-olive'></text>
         <text class='text-grey'>我创建的队伍</text>
-<<<<<<< HEAD
-=======
-        <view class="left">
-        <text class="iconfont icon-xiala" style='font-size:50rpx;color:grey;'></text>
-        </view>
->>>>>>> 8987f2b639b52c8529eeb7b131f6edf88f1db57f
      </button>
     </view>
   </view>
