@@ -8,7 +8,7 @@ Page({
   data: {
     information:[],
    information1:[],
-   
+   flag:0,
   },
   
 
@@ -30,7 +30,7 @@ searchData: function (e) {
           console.log(res.data.info)
           that.setData({ Information1: res.data.info });
           that.setData({ information: [] });
-
+          that.setData({flag:1})
         }
         else {
           wx.showToast({
@@ -117,8 +117,14 @@ searchData: function (e) {
     console.log(e);
       let index = e.currentTarget.dataset.index;
       console.log(index);
+      if(this.data.flag==0){
       wx.navigateTo({
         url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information[index].id,
       })
+    }else{
+      wx.navigateTo({
+        url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.Information1[index].id,
+      })
+    }
   }
 })

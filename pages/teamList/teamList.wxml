@@ -1,25 +1,24 @@
-<!--pages/teamList/teamList.wxml-->
-<import src='/pages/template/list_sort_team.wxml'/>
-    
-<view class="hide{{showView1?'show':''}}">
-
-    <view class="cu-bar bg-white search fixed" style="margin-top:0">
-  <view class='search-form round'>
-    <text class="icon-search"></text>
-    <input type="text" placeholder="搜索team" bindconfirm='searchData'></input>
+<!-- pages/teamList/teamList.wxml -->
+<import src='/pages/template/list_sort_team.wxml' />
+<!-- <view class="hide{{showView1?'show':''}}"> -->
+  <view class="cu-bar bg-white search fixed" style="margin-top:0">
+    <view class='search-form round'>
+      <text class="icon-search"></text>
+      <input type="text" placeholder="搜索team" bindconfirm='searchData'></input>
+    </view>
   </view>
-</view>
-    
-     <block wx:for="{{Information1}}" wx:key="{{index}}" >
-        <view class="divLine"data-index='{{index}}'catchtap="toTeamDetail"style="margin-top:10px;border:solid #66ccff">
-            <template is="teamItem" data="{{...item}}"/>
-        </view>
+  <view style="margin-top:100rpx">
+    <block wx:for="{{Information1}}" wx:key="{{index}}">
+      <view class="divLine" data-index='{{index}}' catchtap="toTeamDetail" style="margin-top:10px;">
+        <template is="teamItem" data="{{...item}}" />
+      </view>
     </block>
   </view>
- <view>
+  <view>
     <block wx:for="{{information}}" wx:key="{{index}}">
-        <view class="divLine"data-index='{{index}}'catchtap="toTeamDetail">
-            <template is="teamItem" data="{{...item}}"/>
-        </view>
+      <view class="divLine" data-index='{{index}}' catchtap="toTeamDetail">
+        <template is="teamItem" data="{{...item}}" />
+      </view>
     </block>
-</view>
+  </view>
+<!-- </view> -->

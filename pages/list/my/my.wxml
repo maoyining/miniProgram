@@ -18,9 +18,9 @@
 <view class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
 <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
   <!-- 显示自己创建的队伍 -->
-  <view class="cu-item arrow">
+  <view class="cu-item arrow" catchtap="onChangeShowState">
     <view>
-      <button class="cu-btn content" bindtap="onChangeShowState">
+      <button class="cu-btn content" >
         <text class='icon-btn text-olive'></text>
         <text class='text-grey'>我创建的队伍</text>
      </button>
@@ -28,7 +28,7 @@
   </view>
   
   <!-- 首先是队伍显示界面，点击之后隐藏 -->
-  <view class="hide{{showView?'show':''}}">
+  <view class="hide{{showView?'show':''}}" style="margin-bottom:20rpx">
     <block wx:for="{{information}}" wx:key="{{index}}">
       <view class="divLine" data-index='{{index}}' catchtap="getTeam">
         <template is="teamItem" data="{{...item}}" />
