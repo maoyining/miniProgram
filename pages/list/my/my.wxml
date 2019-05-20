@@ -4,7 +4,6 @@
 
 <view class='UCenter-bg'>
  <!--用户头像-->
-  
   <open-data type="userAvatarUrl" ></open-data>
 <!--用户昵称-->
   <view class='text-xl'>

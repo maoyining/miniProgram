@@ -53,7 +53,7 @@ Page({
       if (!e.detail.value[element]) {
         wx.showToast({
           title: '表单未填写完整',
-          image: '/static/images/警告.svg',
+          image: '/static/images/warn.svg',
           iconsize: '16px'
         })
         this.data.flag = 1;
@@ -62,7 +62,7 @@ Page({
 
         wx.showToast({
           title: '现有人数比期望人数少',
-          image: '/static/images/警告.svg',
+          image: '/static/images/warn.svg',
           iconsize: '16px'
         })
         this.data.flag = 1;
@@ -99,7 +99,7 @@ var that = this;
           }else {
             wx.showToast({
               title: '创建队伍失败',
-              image: '/static/images/失败.svg',
+              image: '/static/images/fail.svg',
               iconsize: '16px'
             })
           }
