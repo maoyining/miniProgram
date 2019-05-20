@@ -1,23 +1,34 @@
 <!-- index.wxml -->
 <!-- 用于用户登录以及显示用户昵称 -->
 <import src='/pages/template/list_sort_team.wxml' />
+<!--
 <view class="cu-bar bg-white solid-bottom margin-top">
   <view class='action'>
     <text class='icon-title text-orange '></text>
     我的
   </view>
+</view>-->
+<view class='UCenter-bg'>
+ <!--用户头像-->
+  <image src='' class='png' ></image>
+  <open-data type="userAvatarUrl" ></open-data>
+<!--用户昵称-->
+  <view class='text-xl'>
+   <open-data type="userNickName"></open-data>
+  </view>
+ 
+  <image src='https://image.weilanwl.com/gif/wave.gif' style='width:100%' class='gif-wave'></image>
 </view>
+
 <!-- 菜单列表 -->
+<view class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
 <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
   <!-- 显示自己创建的队伍 -->
-  <view class="cu-item {{menuArrow?'arrow':''}}">
+  <view class="cu-item arrow">
     <view>
       <button class="cu-btn content" bindtap="onChangeShowState">
         <text class='icon-btn text-olive'></text>
         <text class='text-grey'>我创建的队伍</text>
-        <view class="left">
-        <text class="iconfont icon-xiala" style='font-size:70rpx;color:grey;'></text>
-        </view>
      </button>
     </view>
   </view>
@@ -35,11 +46,11 @@
   
   
   <!-- 在使用过程中，有问题请联系我们 -->
-  <view class="cu-item {{menuArrow?'arrow':''}}">
-    <button class='cu-btn content'>
-      <text class='icon-discoverfill text-orange'></text>
-      <text class='text-grey'>联系我们</text>
-    </button>
+  <view class="cu-item arrow">
+    <navigator class='content' url='/pages/about/about' hover-class='none'>
+     <text class='icon-discoverfill text-orange'></text>
+      <text class='text-grey'>关于比赛助手</text>
+    </navigator>
   </view>
   <!-- 管理员页面 -->
   <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item {{menuArrow?'arrow':''}}">
@@ -48,5 +59,19 @@
       <text class='text-grey'>管理队伍</text>
     </button>
   </view>
+</view>
+<view class="cu-item arrow">
+    <button class='cu-btn content' open-type='feedback'>
+      <text class='icon-writefill text-cyan'></text>
+      <text class='text-grey'>意见反馈</text>
+    </button>
+  </view>
+  <view class="cu-item arrow">
+    <navigator class='content' url='../test/list' hover-class='none'>
+      <text class='icon-creativefill text-orange'></text>
+      <text class='text-grey'>Bug测试</text>
+    </navigator>
+  </view>
 
 </view>
+

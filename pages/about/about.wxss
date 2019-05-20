@@ -1,0 +1,5 @@
+/* pages/about/about.wxss */
+.text-content{
+  display: flex;
+  text-align: center;
+}

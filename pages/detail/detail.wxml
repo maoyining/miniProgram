@@ -4,7 +4,7 @@
         <wemark md="{{md}}" link highlight type="wemark"></wemark>
         <view>
                 <view>
-                        <button bindtap="Login">我要组队</button>
+                        <button bindtap="Login" class="cu-btn bg-green round shadow " style='width:80%;margin-left:10%'>我要组队</button>
                 </view>
                 <!-- <view class="buttom_tar">
 

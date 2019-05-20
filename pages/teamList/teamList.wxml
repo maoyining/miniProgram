@@ -2,15 +2,16 @@
 <import src='/pages/template/list_sort_team.wxml'/>
     
 <view class="hide{{showView1?'show':''}}">
-    <form bindsubmit='postKey'>
-      <view class="cu-form-group margin-top">
-        <view class='title'>查询条件</view>
-        <input class='radius' name='key'></input>
-      </view>
-      <button class="weui-btn" type="primary" form-type='submit'>搜索</button>
-    </form>
-     <block wx:for="{{Information1}}" wx:key="{{index}}">
-        <view class="divLine"data-index='{{index}}'catchtap="toTeamDetail">
+
+    <view class="cu-bar bg-white search fixed" style="margin-top:0">
+  <view class='search-form round'>
+    <text class="icon-search"></text>
+    <input type="text" placeholder="搜索team" bindconfirm='searchData'></input>
+  </view>
+</view>
+    
+     <block wx:for="{{Information1}}" wx:key="{{index}}" >
+        <view class="divLine"data-index='{{index}}'catchtap="toTeamDetail"style="margin-top:10px;border:solid #66ccff">
             <template is="teamItem" data="{{...item}}"/>
         </view>
     </block>

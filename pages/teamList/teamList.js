@@ -12,38 +12,38 @@ Page({
   },
   
 
-postKey: function (e) {
-  console.log(e)
-  this.setData({ key: e.detail.value.key })
+searchData: function (e) {
+    console.log(e)
+    this.setData({ key: e.detail.value })
 
-  var that = this;
-  console.log(this.data.key);
-  wx.request({
-    url: app.globalData.host+"/search",
-    method: 'POST',
-    data: {
-      keyword: this.data.key
-    },
-    success: function (res) {
-      console.log(res);
-      if (res.statusCode==200){
-        console.log(res.data.info) 
-        that.setData({ Information1: res.data.info });
-        that.setData({ information: [] });
-        
+    var that = this;
+    console.log(this.data.key);
+    wx.request({
+      url: app.globalData.host + "/search",
+      method: 'POST',
+      data: {
+        keyword: this.data.key
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200) {
+          console.log(res.data.info)
+          that.setData({ Information1: res.data.info });
+          that.setData({ information: [] });
+
+        }
+        else {
+          wx.showToast({
+            title: '没有查询到队伍',
+            icon: 'fail',
+            duration: 2000
+          })
+        }
+
       }
-      else{
-        wx.showToast({
-          title: '没有查询到队伍',
-          icon: 'fail',
-          duration: 2000
-        })
-      }
+    })
 
-    }
-  })
-},
-
+  },
   /**
    * 生命周期函数--监听页面加载
    */
