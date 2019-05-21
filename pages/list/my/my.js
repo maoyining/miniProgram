@@ -140,6 +140,15 @@ Page({
     })
   },
 
+/**
+ * toAbout:关于我们
+ */
+toAbout:function(){
+ 
+  wx.navigateTo({
+    url: '/pages/about/about',
+  })
+}
 
 
 

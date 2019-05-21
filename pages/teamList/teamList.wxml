@@ -1,6 +1,7 @@
 <!-- pages/teamList/teamList.wxml -->
 <import src='/pages/template/list_sort_team.wxml' />
-<!-- <view class="hide{{showView1?'show':''}}"> -->
+
+
   <view class="cu-bar bg-white search fixed" style="margin-top:0">
     <view class='search-form round'>
       <text class="icon-search"></text>

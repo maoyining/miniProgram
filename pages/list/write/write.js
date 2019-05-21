@@ -11,7 +11,7 @@ Page({
     index: 0,
     competeName: ['全国大学生数学建模竞赛', '浙江省新苗人才计划大赛', '中国互联网+创新创业大赛', 'ACM程序设计大赛'],
     flag: 0,
-    cname: ''
+    cname: '全国大学生数学建模竞赛'
   },
   //事件处理函数
   bindViewTap: function () {
