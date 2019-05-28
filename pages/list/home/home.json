@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarBackgroundColor": "#ff6666"
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "竞赛HELP",
+  "navigationBarTextStyle": "black"
 }

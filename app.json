@@ -10,7 +10,8 @@
     "pages/list/my/changeTeam/changeTeam",
     "pages/teamList/teamList",
     "pages/list/my/admin/admin",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/list/my/singleInfo/singleInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

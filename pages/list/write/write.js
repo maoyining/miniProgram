@@ -54,6 +54,7 @@ Page({
         wx.showToast({
           title: '表单未填写完整',
           image: '/static/images/warn.svg',
+          
           iconsize: '16px'
         })
         this.data.flag = 1;
