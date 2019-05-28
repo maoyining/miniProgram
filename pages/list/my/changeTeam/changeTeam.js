@@ -7,64 +7,45 @@ Page({
    */
   data: {
     index:1,
-    match:''
+    match:'',
+    
 
   },
 
 
   ChangeTeam: function (e) {
-    var that = this;
-    var id=this.data.teamID;
-    console.log( 'teamID:'+that.data.teamID);
-    console.log('MATCH'+that.data.match);
-    console.log('表单所有值'+e.detail.value);
-    console.log('需求'+that.data.need);
-    var str = '';
-    
-    var i;
-    for (i = 0; i < that.data.need.length - 1; i++) {
-      console.log(that.data.need[i]);
-      str = str + that.data.need[i] + ' ';
-    }
-    str = str + that.data.need[i];
+    console.log(e.detail.value);
+    let teamInfo=this.data.TeamInformation
+    let teamUpdate=e.detail.value
+    console.log(teamInfo)
     wx.request({
-      url: 'https://hducp.hduhelp.com/team',
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
-      method: 'PUT',
+      url: app.globalData.host+"/update",
+      
+      method: 'POST',
       data:
       {
-        "id": that.data.teamID,
-        "match": that.data.match,
-        "name": e.detail.value.name,
-        "tag": e.detail.value.tag,
-        "memberNow": parseInt(e.detail.value.memberNow),
-        "memberTotal": parseInt(e.detail.value.memberTotal),
-        "desc": e.detail.value.desc,
-        "need": str,
-        "contact": e.detail.value.contact,
-        "status": 1
+        "teamID": teamInfo.id,
+        "cname": teamInfo.cname,
+        "tname": teamInfo.tname,
+        
+        "memberNow": parseInt(teamUpdate.memberNow),
+        "memberTotal": parseInt(teamUpdate.memberTotal),
+        "desc": teamUpdate.tag,
+        "need": teamUpdate.need,
+        "contact": teamUpdate.contact,
+       
       },
       success(res) {
         console.log(res);
-        if(res.statusCode==400){
+        if(res.statusCode==200){
           wx.showToast({
-            title: '修改队伍失败',
+            title: '修改队伍成功',
             duration:2000
           })
-        }
-        if(res.statusCode==403){
-          wx.showToast({
-            title: '没有权限修改他人队伍',
-            duration:2000
-          })
-        }
-        else{
+        }else{
         console.log('success');
         wx.showToast({
-          title: '修改队伍成功',
+          title: '修改队伍失败',
           icon: 'success',
           duration: 2000
         })
@@ -127,36 +108,22 @@ Page({
      * 获取团队详情信息。并将其保存在TeamInformaton中
      */
     wx.request({
-      url: 'https://hducp.hduhelp.com/team/my',
-      method: 'GET',
+      url: app.globalData.host + '/team/id',
+      method: 'POST',
       data: {
         teamID: id
       },
-      header: {
-        'Authorization': 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
+     
       success: function (res) {
-        console.log(res.data.data);
-        that.setData({ TeamInformation: res.data.data });
-        console.log(res.data.data.match);
-        that.setData({ match: res.data.data.match});
-        console.log("传入得match值"+that.data.match);
+        console.log(res.data.info[0]);
+        that.setData({ TeamInformation: res.data.info[0] });
+        // console.log(res.data.data.match);
+        // that.setData({ match: res.data.data.match});
+        // console.log("传入得match值"+that.data.match);
       }
     })
 
-    wx.request({
-      url: 'https://hducp.hduhelp.com/team/question',
-      header: {
-        "Authorization": 'token ' + app.globalData.token,
-        'content-type': "application/json; charset='utf-8'"
-      },
-      method: 'GET',
-      success(res) {
-        that.setData({ question: res.data.matches });
-        that.setData({ needs: res.data.need });
-      },
-    })
+  
   },
 
 

@@ -14,7 +14,7 @@
   </view>
   <view class="cu-form-group">
     <view class='title'>队伍简介</view>
-    <div class='radius' name='tag'>{{TeamInformation.need}}</div>
+    <div class='radius' name='tag'>{{TeamInformation.tag}}</div>
   </view>
   <view class="cu-form-group">
     <view class='title'>队伍目前人数</view>
@@ -34,6 +34,7 @@
   </view>
   <!-- <button class="weui-btn" type="primary" bindtap="ChangeTeam">修改信息</button> -->
   <view wx:if="{{openid==TeamInformation.userID}}" class="top">
-    <button class="weui-btn" type="primary" bindtap='DeleteTeam'>删除团队</button>
+    <button class="weui-btn" type="primary" bindtap='DeleteTeam'>删除团队         </button>
+    <button class="weui-btn" type="primary" bindtap="ChangeTeam">修改信息         </button>
   </view>
 </form>
