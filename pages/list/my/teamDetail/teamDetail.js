@@ -169,5 +169,17 @@ getCheck(){
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * JionTeam用户申请加入其他队伍，先跳到信息确认框，信息确认后，返回等待队长同意弹窗
+   * 之后再跳回到当前队伍，并且把申请加入按钮改为已经申请加入。
+   * 审核通过会显示您已经是该队成员了
+   */
+  JionTeam:function(){
+    wx.navigateTo({
+
+      url: "/pages/list/my/singleInfo/singleInfo?id="+this.data.id
+
+   });
   }
 })

@@ -1,1 +1,9 @@
 /* pages/list/my/singleInfo/singleInfo.wxss */
+.weui-btn{
+    margin: 30rpx;
+    border-radius: 50rpx;
+    height:90rpx;
+    font-size:36rpx;
+    background-color: '#ff6666'
+   
+  }
