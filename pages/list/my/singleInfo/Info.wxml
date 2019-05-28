@@ -25,5 +25,5 @@
     <view class='title'>联系方式</view>
     <div class='radius' name='UserContact'>{{Infos.userContact}}</div>
   </view>
-
+     <button class="weui-btn" type="primary" bindtap='toChange'>修改信息</button>
 </form>
