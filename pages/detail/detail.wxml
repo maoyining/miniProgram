@@ -4,22 +4,8 @@
         <wemark md="{{md}}" link highlight type="wemark"></wemark>
         <view>
                 <view>
-                        <button bindtap="Login" class="cu-btn bg-green round shadow " style='width:80%;margin-left:10%'>我要组队</button>
+                        <button bindtap="Login" class="cu-btn bg-green round shadow " style='width:80%;margin-left:10%;height:100rpx;font-size:36rpx;'>我要组队</button>
                 </view>
-                <!-- <view class="buttom_tar">
-
-                <button bindtap="click1"> 
-                <image class="little_icon"  src="{{imgUrls1}}"/>
-                </button>
-
-                <button bindtap="click2"> 
-                <image class="little_icon"  src="{{imgUrls2}}"/>
-                </button>
-
-                <button open-type="share" > 
-                <image class="little_icon" src="{{imgUrls3}}"/>
-                </button>
-
-        </view> -->
+               
         </view>
 </view>
