@@ -10,13 +10,16 @@
     "pages/list/my/changeTeam/changeTeam",
     "pages/teamList/teamList",
     "pages/list/my/admin/admin",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/list/my/singleInfo/singleInfo",
+    "pages/list/my/singleInfo/changeInfo",
+    "pages/list/my/singleInfo/Info"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#e65c00",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "竞赛HELP",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [

@@ -37,4 +37,9 @@
     <button class="weui-btn" type="primary" bindtap='DeleteTeam'>删除团队         </button>
     <button class="weui-btn" type="primary" bindtap="ChangeTeam">修改信息         </button>
   </view>
+
+  <view wx:if="{{openid!=TeamInformation.userID}}" class="top">
+    <button class="weui-btn" type="primary" bindtap='JionTeam'>申请加入</button>
+  </view>
+
 </form>

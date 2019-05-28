@@ -32,10 +32,12 @@ Page({
     this.setData({
   
           openid:app.globalData.openid,
-          showView:(options.showView == 'true'? true:false)
+          showView:(options.showView == 'true'? true:false),
+          showView1:(options.showView1 == 'true'? true:false),
         })
   
     showView:(options.showView == 'true'? true:false)
+    showView1:(options.showView1 == 'true'? true:false)
 
   },
 
@@ -103,6 +105,52 @@ Page({
     })
   },
 
+
+
+  onChangeShowState1:function(){
+    var that=this;
+    that.setData({showView1:(!that.data.showView1)})
+    /**
+      * 获取我申请的团队信息(列表)
+      * page:页码（首页=1）
+      * rpp:每页的显示量，最大值为20
+      */
+    var that = this;
+    wx.request({
+      url: app.globalData.host+' ',
+      method: 'POST',
+      data: {
+        openid:app.globalData.openid
+      },
+     
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200){
+          that.setData({ information1: res.data.info });
+          let i;
+        for(i=0;i<res.data.info.length;i++){
+          let str='information1['+i+'].state'
+          if (res.data.info[i].status==0){
+            that.setData({[str]:'审核状态：审核中'})
+          }else if(res.data.info[i].status==1){
+            that.setData({[str]:'审核状态：审核通过'})
+          }else{
+            that.setData({[str]:'审核状态：审核未通过'})
+          }
+
+        }
+        }else {
+          wx.showToast({
+            title: '您还没有申请团队',
+          })
+        }
+
+      }
+    })
+  },
+
+
+
   /**
    * allTeams 管理员操作审核，将跳转到一个新的页面
    */
@@ -120,25 +168,9 @@ Page({
     wx.stopPullDownRefresh()
   },
 
-  onChangeShowStateTeam: function (e) {
-    var that = this;
-    
-    that.setData({ showView1: (!that.data.showView1) })
-
-  },
+ 
   
-  /**
-  * 
-  * 需要传递参数teamID
-  */
-  getTeam1: function (e) {
-    console.log(e);
-    let index = e.currentTarget.dataset.index;
-    console.log(index);
-    wx.navigateTo({
-      url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.Information1[index].id,
-    })
-  },
+ 
 
 /**
  * toAbout:关于我们
@@ -148,8 +180,16 @@ toAbout:function(){
   wx.navigateTo({
     url: '/pages/about/about',
   })
-}
+},
 
+/**
+ * toSingleInfo用户个人信息的编辑
+ */
+toSingleInfo:function(){
+  wx.navigateTo({
+    url: '/pages/list/my/singleInfo/singleInfo',
+  })
+}
 
 
 

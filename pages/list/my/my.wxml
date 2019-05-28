@@ -1,5 +1,5 @@
 <!-- index.wxml -->
-<!-- 用于用户登录以及显示用户昵称 -->
+
 <import src='/pages/template/list_sort_team.wxml' />
 
 <view class='UCenter-bg'>
@@ -35,20 +35,53 @@
       
     </block>
   </view>
-  <!-- 点击之后输入条件，输入结束之后先跳转到结果界面，之后返回到本页面 -->
+ 
   
   
-  <!-- 在使用过程中，有问题请联系我们 -->
-  <view class="cu-item arrow" catchtap="toAbout" >
-  <!--<navigator class='content' url='/pages/about/about' hover-class='none'>-->
-     
-<button class="cu-btn content" >
+  
+ 
+
+ 
+
+    <!-- 显示自己申请的队伍 -->
+  <view class="cu-item arrow" catchtap="onChangeShowState1">
+    <view>
+      <button class="cu-btn content" >
+        <text class='icon-btn text-olive'></text>
+        <text class='text-grey'>我申请的队伍</text>
+     </button>
+    </view>
+  </view>
+  
+  <!-- 首先是队伍显示界面，点击之后隐藏 -->
+  <view class="hide{{showView1?'show':''}}" style="margin-bottom:20rpx">
+    <block wx:for="{{information1}}" wx:key="{{index}}">
+      <view class="divLine" data-index='{{index}}' catchtap="getTeam">
+        <template is="teamItem" data="{{...item}}" />
+      </view>
+      
+    </block>
+  </view>
+ 
+  <!--个人信息的管理-->
+   <view class="cu-item arrow" catchtap="toSingleInfo" >
+  <button class="cu-btn content" >
      <text class='icon-discoverfill text-orange'></text>
-      <text class='text-grey'>关于比赛助手</text>
+      <text class='text-grey'>我的个人信息</text>
    </button>
    
   </view>
-  <!-- 管理员页面 -->
+
+  <!-- 查看其他人向自己申请消息-->
+ <view class="cu-item arrow" catchtap="messages" >
+  <button class="cu-btn content" >
+     <text class='icon-discoverfill text-orange'></text>
+      <text class='text-grey'>消息管理</text>
+   </button> 
+  </view>
+
+
+   <!-- 管理员页面 -->
   <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item {{menuArrow?'arrow':''}}">
     <button class='cu-btn content' bindtap='allTeams'>
       <text class='icon-discoverfill text-orange'></text>
@@ -56,18 +89,14 @@
     </button>
   </view>
 </view>
-<view class="cu-item arrow">
-    <button class='cu-btn content' open-type='feedback'>
-      <text class='icon-writefill text-cyan'></text>
-      <text class='text-grey'>意见反馈</text>
-    </button>
-  </view>
-  <view class="cu-item arrow">
-    <navigator class='content' url='../test/list' hover-class='none'>
-      <text class='icon-creativefill text-orange'></text>
-      <text class='text-grey'>Bug测试</text>
-    </navigator>
-  </view>
 
+<!-- 在使用过程中，有问题请联系我们 -->
+  <view class="cu-item arrow" catchtap="toAbout" >
+    <button class="cu-btn content" >
+     <text class='icon-discoverfill text-orange'></text>
+      <text class='text-grey'>关于比赛助手</text>
+   </button>
+   
+  </view>
 </view>
 

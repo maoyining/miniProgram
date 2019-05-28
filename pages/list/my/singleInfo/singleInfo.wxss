@@ -1,10 +1,4 @@
-/* pages/list/my/teamDetail/teamDetail.wxss */
-.top{
-    margin-top: 40rpx;
-}
-.po{
-    margin-top: 200rpx;
-}
+/* pages/list/my/singleInfo/singleInfo.wxss */
 .weui-btn{
     margin: 30rpx;
     border-radius: 50rpx;
