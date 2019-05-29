@@ -1,29 +1,40 @@
 
+
+
 <form>
+<view class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
   <view class="cu-form-group ">
     <view class='title'>姓名</view>
-    <div class="radius" name='UserName'>{{Infos.userName}}</div>
+    <div class="radius" name='UserName'>{{Infos.uname}}</div>
   </view>
-  <view class="cu-form-group margin-top">
+  <view class="cu-form-group">
     <view class='title'>学号</view>
-    <div class='radius' name='UserNumber'>{{Infos.userNumber}}</div>
+    <div class='radius' name='UserNumber'>{{Infos.stunum}}</div>
   </view>
   <view class="cu-form-group">
     <view class='title'>学院</view>
-    <div class='radius' name='UserAcademy'>{{Infos.userAcademy}}</div>
+    <div class='radius' name='UserAcademy'>{{Infos.uacademy}}</div>
   </view>
   <view class="cu-form-group">
     <view class='title'>性别</view>
-    <div class='radius' name='UserSex'>{{Infos.userSex}}</div>
+    <div class='radius' name='UserSex'>{{Infos.usex}}</div>
   </view>
   <view class="cu-form-group">
     <view class='title'>简介</view>
-    <div class='radius' name='UserDescribes'>{{Infos.userDescribes}}</div>
+    <div class='radius' name='UserDescribes'>{{Infos.udesc}}</div>
   </view>
   
   <view class="cu-form-group">
     <view class='title'>联系方式</view>
-    <div class='radius' name='UserContact'>{{Infos.userContact}}</div>
+    <div class='radius' name='UserContact'>{{Infos.ucontact}}</div>
   </view>
-     <button class="weui-btn" type="primary" bindtap='toChange'>修改信息</button>
+  </view>
+  </view>
+     <button class="weui-btn" type="primary" bindtap='toChange'>我要修改</button>
+     <view wx:if="{{enter=='true'}}">
+     <button class="weui-btn" type="primary" bindtap='jointeam'>确认报名组队</button>
+     </view>
 </form>
+
+

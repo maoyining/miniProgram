@@ -1,102 +1,78 @@
 <!-- index.wxml -->
-
 <import src='/pages/template/list_sort_team.wxml' />
-
 <view class='UCenter-bg'>
- <!--用户头像-->
-  <open-data type="userAvatarUrl" ></open-data>
-<!--用户昵称-->
+  <!-- 用户头像 -->
+  <open-data type="userAvatarUrl"></open-data>
+  <!-- 用户昵称 -->
   <view class='text-xl'>
-   <open-data type="userNickName"></open-data>
+    <open-data type="userNickName"></open-data>
   </view>
- 
   <image src='https://image.weilanwl.com/gif/wave.gif' style='width:100%' class='gif-wave'></image>
 </view>
-
 <!-- 菜单列表 -->
 <view class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
-<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
-  <!-- 显示自己创建的队伍 -->
-  <view class="cu-item arrow" catchtap="onChangeShowState">
-    <view>
-      <button class="cu-btn content" >
-        <text class='icon-btn text-olive'></text>
-        <text class='text-grey'>我创建的队伍</text>
-     </button>
-    </view>
-  </view>
-  
-  <!-- 首先是队伍显示界面，点击之后隐藏 -->
-  <view class="hide{{showView?'show':''}}" style="margin-bottom:20rpx">
-    <block wx:for="{{information}}" wx:key="{{index}}">
-      <view class="divLine" data-index='{{index}}' catchtap="getTeam">
-        <template is="teamItem" data="{{...item}}" />
+  <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+    <!-- 显示自己创建的队伍 -->
+    <view class="cu-item arrow" catchtap="onChangeShowState">
+      <view>
+        <button class="cu-btn content">
+          <text class='icon-btn text-olive'></text>
+          <text class='text-grey'>我创建的队伍</text>
+        </button>
       </view>
-      
-    </block>
-  </view>
- 
-  
-  
-  
- 
-
- 
-
+    </view>
+    <!-- 首先是队伍显示界面，点击之后隐藏 -->
+    <view class="hide{{showView?'show':''}}" style="margin-bottom:20rpx">
+      <block wx:for="{{information}}" wx:key="{{index}}">
+        <view class="divLine" data-index='{{index}}' catchtap="getTeam">
+          <template is="teamItem" data="{{...item}}" />
+        </view>
+      </block>
+    </view>
     <!-- 显示自己申请的队伍 -->
-  <view class="cu-item arrow" catchtap="onChangeShowState1">
-    <view>
-      <button class="cu-btn content" >
-        <text class='icon-btn text-olive'></text>
-        <text class='text-grey'>我申请的队伍</text>
-     </button>
+    <view class="cu-item arrow" catchtap="onChangeShowState1">
+      <view>
+        <button class="cu-btn content">
+          <text class='icon-btn text-olive'></text>
+          <text class='text-grey'>我申请的队伍</text>
+        </button>
+      </view>
+    </view>
+    <!-- 首先是队伍显示界面，点击之后隐藏 -->
+    <view class="hide{{showView1?'show':''}}" style="margin-bottom:20rpx">
+      <block wx:for="{{information1}}" wx:key="{{index}}">
+        <view class="divLine" data-index='{{index}}' catchtap="getTeam">
+          <template is="teamItem" data="{{...item}}" />
+        </view>
+      </block>
+    </view>
+    <!-- 个人信息的管理 -->
+    <view class="cu-item arrow" catchtap="toSingleInfo">
+      <button class="cu-btn content">
+        <text class='icon-discoverfill text-orange'></text>
+        <text class='text-grey'>我的个人信息</text>
+      </button>
+    </view>
+    <!-- 查看其他人向自己申请消息 -->
+    <view class="cu-item arrow" catchtap="messages">
+      <button class="cu-btn content">
+        <text class='icon-discoverfill text-orange'></text>
+        <text class='text-grey'>消息管理</text>
+      </button>
+    </view>
+    <!-- 管理员页面 -->
+    <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item {{menuArrow?'arrow':''}}">
+      <button class='cu-btn content' bindtap='allTeams'>
+        <text class='icon-discoverfill text-orange'></text>
+        <text class='text-grey'>管理队伍</text>
+      </button>
     </view>
   </view>
-  
-  <!-- 首先是队伍显示界面，点击之后隐藏 -->
-  <view class="hide{{showView1?'show':''}}" style="margin-bottom:20rpx">
-    <block wx:for="{{information1}}" wx:key="{{index}}">
-      <view class="divLine" data-index='{{index}}' catchtap="getTeam">
-        <template is="teamItem" data="{{...item}}" />
-      </view>
-      
-    </block>
-  </view>
- 
-  <!--个人信息的管理-->
-   <view class="cu-item arrow" catchtap="toSingleInfo" >
-  <button class="cu-btn content" >
-     <text class='icon-discoverfill text-orange'></text>
-      <text class='text-grey'>我的个人信息</text>
-   </button>
-   
-  </view>
-
-  <!-- 查看其他人向自己申请消息-->
- <view class="cu-item arrow" catchtap="messages" >
-  <button class="cu-btn content" >
-     <text class='icon-discoverfill text-orange'></text>
-      <text class='text-grey'>消息管理</text>
-   </button> 
-  </view>
-
-
-   <!-- 管理员页面 -->
-  <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item {{menuArrow?'arrow':''}}">
-    <button class='cu-btn content' bindtap='allTeams'>
+  <!-- 在使用过程中，有问题请联系我们 -->
+  <view class="cu-item arrow" catchtap="toAbout">
+    <button class="cu-btn content">
       <text class='icon-discoverfill text-orange'></text>
-      <text class='text-grey'>管理队伍</text>
+      <text class='text-grey'>关于比赛助手</text>
     </button>
   </view>
 </view>
-
-<!-- 在使用过程中，有问题请联系我们 -->
-  <view class="cu-item arrow" catchtap="toAbout" >
-    <button class="cu-btn content" >
-     <text class='icon-discoverfill text-orange'></text>
-      <text class='text-grey'>关于比赛助手</text>
-   </button>
-   
-  </view>
-</view>
-

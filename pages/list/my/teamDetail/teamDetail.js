@@ -175,11 +175,37 @@ getCheck(){
    * 之后再跳回到当前队伍，并且把申请加入按钮改为已经申请加入。
    * 审核通过会显示您已经是该队成员了
    */
-  JionTeam:function(){
-    wx.navigateTo({
+  JoinTeam:function(){
+    let that=this
+    wx.request({
+      url: app.globalData.host+'/checkinfo',
+      method: 'POST',
+      data: {
+        openid:app.globalData.openid
+      },
+     
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200){
+          console.log(res.data.judge)
+          if(res.data.judge==true){
+            wx.navigateTo({
+              url: '/pages/list/my/singleInfo/Info?enter=true&id='+that.data.id,
+            })
+          }else{
+            wx.navigateTo({
+              url: '/pages/list/my/singleInfo/singleInfo',
+            })
+          }
+        }else{
+          console.log("error")
+        }
+      }
+    })
+  //   wx.navigateTo({
 
-      url: "/pages/list/my/singleInfo/singleInfo?id="+this.data.id
+  //     url: "/pages/list/my/singleInfo/Info?id="+this.data.id
 
-   });
+  //  });
   }
 })

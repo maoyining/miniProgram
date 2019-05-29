@@ -39,7 +39,7 @@
   </view>
 
   <view wx:if="{{openid!=TeamInformation.userID}}" class="top">
-    <button class="weui-btn" type="primary" bindtap='JionTeam'>申请加入</button>
+    <button class="weui-btn" type="primary" bindtap='JoinTeam'>有意向加入</button>
   </view>
 
 </form>

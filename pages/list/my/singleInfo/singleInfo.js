@@ -68,11 +68,11 @@ Page({
 /**
  * singleInfos --提交个人信息表单，注意每个数据均不能为空
  */
-CreateTeam: function (e) {
+SingleInfos: function (e) {
     
   //如果e.detail.value.username,或者还有其他成员为空,
   //则不会进行wx.request,并且跳出弹出框输入内容不为空
-  console.log(this.data.flag)
+  console.log(e)
   for (var element in e.detail.value) {
     if (!e.detail.value[element]) {
       wx.showToast({
@@ -88,17 +88,17 @@ CreateTeam: function (e) {
 
   var that = this;
     wx.request({
-      url: app.globalData.host + '',
+      url: app.globalData.host + '/info',
       method: 'POST',
       data:
       {
         "openid": app.globalData.openid,
-        "userName": e.detail.value.UserName,
+        "userName": e.detail.value.Username,
         "userNumber": e.detail.value.UserNumber,
-        "userAcademy": e.detail.value.UserAcademy,
-        "userSex": e.detail.value.UserSex,
-        "userDesc": e.detail.value.UserDesc,
-        "userContact": e.detail.value.UserContact,
+        "userAcademy": e.detail.value.Academy,
+        "userSex": e.detail.value.sex,
+        "userDesc": e.detail.value.describes,
+        "userContact": e.detail.value.contact,
        
       },
       success(res) {

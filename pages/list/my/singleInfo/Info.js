@@ -6,28 +6,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+     enter:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var id = options.id;
-    console.log(id);
-    this.setData({ id: id });
+   
+    console.log(options)
+    if(options.enter=="true"){
+      this.setData({ enter:"true",id:parseInt(options.id)  });
+    }else{
+      this.setData({ enter:"false"  });
+    }
+  //   this.setData({ enter:"true"  });
+    
     this.setData({ openid:app.globalData.openid  });
     var that = this;
     wx.request({
-      url: app.globalData.host + '',
+      url: app.globalData.host + '/checkinfo',
       method: 'POST',
       data: {
-        teamID: id
+        openid:app.globalData.openid
       },
       success: function (res) {
+        if(res.statusCode==200){
         console.log(res.data.info[0]);
         that.setData({ Infos: res.data.info[0] });
-   
+        }
       }
     })
   },
@@ -88,5 +95,28 @@ Page({
 
       url: "/pages/list/my/singleInfo/changeInfo"
    });
+  },
+  jointeam:function(){
+    //正式申请加入队伍
+    let that=this
+    wx.request({
+      url: app.globalData.host + '/comjoin',
+      method: 'POST',
+      data: {
+        uid:app.globalData.openid,
+        tid:that.data.id
+      },
+      success: function (res) {
+        if(res.statusCode==200){
+          wx.showToast({
+            title: '报名成功！',
+          })
+        }else{
+          wx.showToast({
+            title: '不可重复报名！',
+          })
+        }
+      }
+    })
   }
 })
