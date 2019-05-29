@@ -53,6 +53,14 @@ Page({
       url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information[index].id,
     })
   },
+  getJoinTeam: function (e) {
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information1[index].id,
+    })
+  },
 
   getUserInfo: function(e) {
     console.log(e)
@@ -106,48 +114,46 @@ Page({
   },
 
 
-
-  // onChangeShowState1:function(){
-  //   var that=this;
-  //   that.setData({showView1:(!that.data.showView1)})
-  //   /**
-  //     * 获取我申请的团队信息(列表)
-  //     * page:页码（首页=1）
-  //     * rpp:每页的显示量，最大值为20
-  //     */
-  //   var that = this;
-  //   wx.request({
-  //     url: app.globalData.host+' ',
-  //     method: 'POST',
-  //     data: {
-  //       openid:app.globalData.openid
-  //     },
+    /**
+      * 获取我申请的团队信息(列表)
+      * page:页码（首页=1）
+      * rpp:每页的显示量，最大值为20
+      */
+  onChangeShowState1:function(){
+    var that=this;
+    that.setData({showView1:(!that.data.showView1)})
+    wx.request({
+      url: app.globalData.host+'/myjoin',
+      method: 'POST',
+      data: {
+        openid:app.globalData.openid
+      },
      
-  //     success: function (res) {
-  //       console.log(res);
-  //       if (res.statusCode == 200){
-  //         that.setData({ information1: res.data.info });
-  //         let i;
-  //       for(i=0;i<res.data.info.length;i++){
-  //         let str='information1['+i+'].state'
-  //         if (res.data.info[i].status==0){
-  //           that.setData({[str]:'审核状态：审核中'})
-  //         }else if(res.data.info[i].status==1){
-  //           that.setData({[str]:'审核状态：审核通过'})
-  //         }else{
-  //           that.setData({[str]:'审核状态：审核未通过'})
-  //         }
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200){
+          that.setData({ information1: res.data.info });
+          let i;
+        for(i=0;i<res.data.info.length;i++){
+          let str='information1['+i+'].state'
+          if (res.data.info[i].status==0){
+            that.setData({[str]:'审核状态：审核中'})
+          }else if(res.data.info[i].status==1){
+            that.setData({[str]:'审核状态：审核通过'})
+          }else{
+            that.setData({[str]:'审核状态：审核未通过'})
+          }
 
-  //       }
-  //       }else {
-  //         wx.showToast({
-  //           title: '您还没有申请团队',
-  //         })
-  //       }
+        }
+        }else {
+          wx.showToast({
+            title: '无结果',
+          })
+        }
 
-  //     }
-  //   })
-  // },
+      }
+    })
+  },
 
 
 

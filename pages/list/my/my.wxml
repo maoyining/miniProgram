@@ -22,6 +22,7 @@
       </view>
     </view>
     <!-- 首先是队伍显示界面，点击之后隐藏 -->
+     
     <view class="hide{{showView?'show':''}}" style="margin-bottom:20rpx">
       <block wx:for="{{information}}" wx:key="{{index}}">
         <view class="divLine" data-index='{{index}}' catchtap="getTeam">
@@ -29,7 +30,9 @@
         </view>
       </block>
     </view>
+    
     <!-- 显示自己申请的队伍 -->
+   
     <view class="cu-item arrow" catchtap="onChangeShowState1">
       <view>
         <button class="cu-btn content">
@@ -38,10 +41,11 @@
         </button>
       </view>
     </view>
+   
     <!-- 首先是队伍显示界面，点击之后隐藏 -->
     <view class="hide{{showView1?'show':''}}" style="margin-bottom:20rpx">
       <block wx:for="{{information1}}" wx:key="{{index}}">
-        <view class="divLine" data-index='{{index}}' catchtap="getTeam">
+        <view class="divLine" data-index='{{index}}' catchtap="getJoinTeam">
           <template is="teamItem" data="{{...item}}" />
         </view>
       </block>
@@ -59,6 +63,13 @@
         <text class='icon-discoverfill text-orange'></text>
         <text class='text-grey'>消息管理</text>
       </button>
+    </view>
+    <view class="hide{{showView1?'show':''}}" style="margin-bottom:20rpx">
+      <block wx:for="{{information1}}" wx:key="{{index}}">
+        <view class="divLine" data-index='{{index}}' catchtap="getJoinTeam">
+          <template is="teamItem" data="{{...item}}" />
+        </view>
+      </block>
     </view>
     <!-- 管理员页面 -->
     <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item {{menuArrow?'arrow':''}}">
