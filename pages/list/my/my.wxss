@@ -1,5 +1,6 @@
 /**index.wxss**/
 @import '/pages/template/list_sort_team.wxss';
+@import '/pages/template/member.wxss';
 .userinfo {
   display: flex;
   flex-direction: column;

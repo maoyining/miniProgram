@@ -1,37 +1,15 @@
-
 <template name="member">
-<form>
-<view class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
-<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
-  <view class="cu-form-group ">
-    <view class='title'>姓名</view>
-    <div class="radius" name='UserName'>{{Infos.uname}}</div>
-  </view>
-  <view class="cu-form-group">
-    <view class='title'>学号</view>
-    <div class='radius' name='UserNumber'>{{Infos.stunum}}</div>
-  </view>
-  <view class="cu-form-group">
-    <view class='title'>学院</view>
-    <div class='radius' name='UserAcademy'>{{Infos.uacademy}}</div>
-  </view>
-  <view class="cu-form-group">
-    <view class='title'>性别</view>
-    <div class='radius' name='UserSex'>{{Infos.usex}}</div>
-  </view>
-  <view class="cu-form-group">
-    <view class='title'>简介</view>
-    <div class='radius' name='UserDescribes'>{{Infos.udesc}}</div>
-  </view>
-  
-  <view class="cu-form-group">
-    <view class='title'>联系方式</view>
-    <div class='radius' name='UserContact'>{{Infos.ucontact}}</div>
-  </view>
-  </view>
-  </view>
-     <button class="weui-btn" type="primary" bindtap=''>同意加入</button>
-     <button class="weui-btn" type="primary" bindtap=''>拒绝加入</button>
-     
-</form>
+<view class="cu-form-group">
+
+    <view class='icon-btn text-olive'>
+        <view class="cmp_font">
+          比赛:{{cname}}
+        </view>
+        <view class="cmp_font">
+         申请人:{{uname}}
+        </view>
+        
+       <!-- 在这个模板里把队伍创建的日期也给加上，后端传回来的日期精确到时分秒，需要前端把队伍的日期用字符串截取的方式处理一下再上传 -->
+    </view>
+</view>
 </template>

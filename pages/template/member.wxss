@@ -1,0 +1,41 @@
+/* pages/template/list_home_cmp.wxss */
+
+.container1{
+    height: 100%;
+    width:100%;
+    /* background-color:#f2f2f2; */
+    margin-top:5rpx;
+    display:flex;
+}
+    
+    
+.item1{
+    height:200rpx;
+    width:65%;
+   
+  
+  
+   
+}
+
+.item2{
+    height:200rpx;
+    width:45%;
+    margin-right:30rpx;
+    margin-left:10rpx;
+   
+}
+
+
+.cmp_font{
+    font-size:30rpx;
+    font-family:'Courier New';
+    font-weight:550;
+    margin-top: 30rpx;
+    color:rgb(51, 102, 153);
+}
+
+
+   .divLine{
+   margin-top: 15rpx;
+   }

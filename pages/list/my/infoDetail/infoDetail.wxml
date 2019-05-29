@@ -1,0 +1,42 @@
+<form>
+<view class='cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg'>
+<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+  <view class="cu-form-group ">
+    <view class='title'>比赛名称</view>
+    <div class="radius" name='UserName'>{{infoDetail.cname}}</div>
+  </view>
+  <view class="cu-form-group ">
+    <view class='title'>队伍名称</view>
+    <div class="radius" name='UserName'>{{infoDetail.tname}}</div>
+  </view>
+  <view class="cu-form-group ">
+    <view class='title'>姓名</view>
+    <div class="radius" name='UserName'>{{infoDetail.uname}}</div>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>学号</view>
+    <div class='radius' name='UserNumber'>{{infoDetail.stunum}}</div>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>学院</view>
+    <div class='radius' name='UserAcademy'>{{infoDetail.uacademy}}</div>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>性别</view>
+    <div class='radius' name='UserSex'>{{infoDetail.usex}}</div>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>简介</view>
+    <div class='radius' name='UserDescribes'>{{infoDetail.udesc}}</div>
+  </view>
+  
+  <view class="cu-form-group">
+    <view class='title'>联系方式</view>
+    <div class='radius' name='UserContact'>{{infoDetail.ucontact}}</div>
+  </view>
+  </view>
+  </view>
+     <button class="weui-btn" type="primary" bindtap='agree'>同意组队</button>
+     <button class="weui-btn" type="primary" bindtap='disagree'>不同意组队</button>
+     
+</form>

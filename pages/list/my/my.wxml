@@ -1,5 +1,6 @@
 <!-- index.wxml -->
 <import src='/pages/template/list_sort_team.wxml' />
+<import src='/pages/template/member.wxml' />
 <view class='UCenter-bg'>
   <!-- 用户头像 -->
   <open-data type="userAvatarUrl"></open-data>
@@ -64,10 +65,10 @@
         <text class='text-grey'>消息管理</text>
       </button>
     </view>
-    <view class="hide{{showView1?'show':''}}" style="margin-bottom:20rpx">
-      <block wx:for="{{information1}}" wx:key="{{index}}">
-        <view class="divLine" data-index='{{index}}' catchtap="getJoinTeam">
-          <template is="teamItem" data="{{...item}}" />
+    <view class="hide{{showView2?'show':''}}" style="margin-bottom:20rpx">
+      <block wx:for="{{message}}" wx:key="{{index}}">
+        <view class="divLine" data-index='{{index}}' catchtap="getInfoByid">
+          <template is="member" data="{{...item}}" />
         </view>
       </block>
     </view>

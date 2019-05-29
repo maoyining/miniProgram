@@ -9,7 +9,7 @@ Page({
     CustomBar: app.globalData.CustomBar,
     showView:true,
     showView1:true,
-  
+    showView2:true,
     gridCol: 3,
     skin: false,
     // information:[{
@@ -34,11 +34,12 @@ Page({
           openid:app.globalData.openid,
           showView:(options.showView == 'true'? true:false),
           showView1:(options.showView1 == 'true'? true:false),
+          showView2:(options.showView2 == 'true'? true:false),
         })
   
     showView:(options.showView == 'true'? true:false)
     showView1:(options.showView1 == 'true'? true:false)
-
+    showView2:(options.showView2 == 'true'? true:false)
   },
 
   /**
@@ -59,6 +60,14 @@ Page({
     console.log(index);
     wx.navigateTo({
       url: '/pages/list/my/teamDetail/teamDetail?id=' + this.data.information1[index].id,
+    })
+  },
+  getInfoByid: function (e) {
+    console.log(e);
+    let index = e.currentTarget.dataset.index;
+    console.log(index);
+    wx.navigateTo({
+      url: '/pages/list/my/infoDetail/infoDetail?id='+index,//+ this.data.message[index].id,
     })
   },
 
@@ -221,6 +230,8 @@ toSingleInfo:function(){
   
 },
 messages:function(){
+  var that=this;
+    that.setData({showView2:(!that.data.showView2)})
   wx.request({
     url: app.globalData.host + '/member',
     method: 'POST',
@@ -229,7 +240,9 @@ messages:function(){
     },
     success: function (res) {
       console.log(res.data.info);
-      
+      that.setData({
+        message:res.data.info
+      })
     }
   })
 }
