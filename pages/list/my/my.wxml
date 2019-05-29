@@ -34,7 +34,7 @@
       <view>
         <button class="cu-btn content">
           <text class='icon-btn text-olive'></text>
-          <text class='text-grey'>我申请的队伍</text>
+          <text class='text-grey'>我加入的队伍</text>
         </button>
       </view>
     </view>
