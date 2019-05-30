@@ -3,8 +3,10 @@
         <!-- <image class="img_begin" src="/static/images/begin.jpg"/> -->
         <wemark md="{{md}}" link highlight type="wemark"></wemark>
         <view>
+       
                 <view>
-                        <button bindtap="Login" class="cu-btn bg-green round shadow " style='width:80%;margin-left:10%;height:100rpx;font-size:36rpx;'>我要组队</button>
+                        <button bindtap="Login" class="cu-btn bg-green round shadow " style='width:80%;margin-left:10%;height:100rpx;font-size:36rpx;width:50%'>我要组队</button> 
+                        <button class="cu-btn bg-grey round shadow" open-type="share" style='margin-left:10%'>分享</button>
                 </view>
                
         </view>
