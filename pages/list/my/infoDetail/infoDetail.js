@@ -41,6 +41,9 @@ agree(){
         title: '操作失败！',
       })
     }
+    wx.switchTab({
+      url: '/pages/list/my/my',
+    })
     }
   })
 },
@@ -68,6 +71,9 @@ agree(){
           title: '操作失败！',
         })
       }
+      wx.switchTab({
+        url: '/pages/list/my/my',
+      })
       }
     })
   },
