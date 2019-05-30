@@ -10,9 +10,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     
     imgUrls: [
-      '/static/images/bg_1.jpg',
-      '/static/images/bg_2.jpg',
-      '/static/images/bg_3.png'
+      '/static/images/dachuang.jpg',
+      '/static/images/jiqiren.jpg',
+      '/static/images/shumo.jpg'
       
     ],
     indicatorDots: true,//轮播图上的圆点

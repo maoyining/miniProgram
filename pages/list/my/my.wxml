@@ -51,17 +51,11 @@
         </view>
       </block>
     </view>
-    <!-- 个人信息的管理 -->
-    <view class="cu-item arrow" catchtap="toSingleInfo">
-      <button class="cu-btn content">
-        <text class='icon-discoverfill text-orange'></text>
-        <text class='text-grey'>我的个人信息</text>
-      </button>
-    </view>
+
     <!-- 查看其他人向自己申请消息 -->
     <view class="cu-item arrow" catchtap="messages">
       <button class="cu-btn content">
-        <text class='icon-discoverfill text-orange'></text>
+        <text class='icon-btn text-olive'></text>
         <text class='text-grey'>消息管理</text>
       </button>
     </view>
@@ -72,8 +66,16 @@
         </view>
       </block>
     </view>
+    <!-- 个人信息的管理 -->
+    <view class="cu-item arrow" catchtap="toSingleInfo">
+      <button class="cu-btn content">
+        <text class='icon-discoverfill text-orange'></text>
+        <text class='text-grey'>我的个人信息</text>
+      </button>
+    </view>
+    
     <!-- 管理员页面 -->
-    <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item {{menuArrow?'arrow':''}}">
+    <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}" class="cu-item arrow">
       <button class='cu-btn content' bindtap='allTeams'>
         <text class='icon-discoverfill text-orange'></text>
         <text class='text-grey'>管理队伍</text>

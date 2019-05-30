@@ -1,6 +1,9 @@
 <!-- pages/list/my/teamDetail/teamDetail.wxml -->
 <form>
-  <view class="cu-form-group margin-top">
+ 
+ 
+  <view class="cu-form-group ">
+ 
     <view class='title'>比赛名称</view>
     <div class="radius" name='match'>{{TeamInformation.cname}}</div>
   </view>
@@ -28,6 +31,7 @@
     <view class='title'>联系人的微信</view>
     <div class='radius' name='contact'>{{TeamInformation.contact}}</div>
   </view>
+  <button  open-type='share'><text class="icon-share">分享</text></button>
   <view wx:if="{{openid=='oJAw44-b39ABKsBg6XFNX7wdH4NI'}}">
     <button class="weui-btn" type="primary" bindtap="getCheck">通过</button>
     <button class="weui-btn" type="primary" bindtap="getUncheck">不通过</button>
@@ -39,7 +43,7 @@
   </view>
 
   <view wx:if="{{openid!=TeamInformation.userID}}" class="top">
-    <button class="weui-btn" type="primary" bindtap='JoinTeam'>有意向加入</button>
+    <button class="weui-btn" type="primary" bindtap='JoinTeam' >有意向加入</button>
   </view>
 
 </form>
