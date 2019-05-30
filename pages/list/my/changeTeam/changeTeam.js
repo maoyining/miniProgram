@@ -42,6 +42,11 @@ Page({
             title: '修改队伍成功',
             duration:2000
           })
+          wx.switchTab({
+            url: '/pages/list/my/my',
+          })
+            
+          
         }else{
         console.log('success');
         wx.showToast({
