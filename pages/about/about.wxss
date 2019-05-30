@@ -1,14 +1,12 @@
 /* pages/about/about.wxss */
-.content{
-  margin:30px;
-  
-  background-color: #fff;
+.cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg{
+  background-color:#ffffff;
 }
 .title{
   text-align: center;
   /*margin-top: 20px;*/
   padding-top:10px;
-  color:grey;
+ 
   
 }
 .items{

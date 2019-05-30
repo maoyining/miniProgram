@@ -110,12 +110,19 @@ Page({
         if(res.statusCode==200){
           wx.showToast({
             title: '报名成功！',
+            duration:2000
           })
+        
         }else{
           wx.showToast({
             title: '不可重复报名！',
+            duration:2000
           })
+         
         }
+        wx.switchTab({
+          url: '/pages/teamList/teamList',
+        })
       }
     })
   }
